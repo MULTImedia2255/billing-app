@@ -1,0 +1,4513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>South Indian Saw Mill - Sales Billing System</title>
+  <style>
+/* ==========================================================================
+   SOUTH INDIAN SAW MILL - MODERN SALES BILLING SYSTEM
+   Mobile-First SaaS UI + Exact 1:1 Tally A4 Print Layout (80-85% Page Proportion)
+   ========================================================================== */
+
+:root {
+  --primary: #1e3a8a;
+  --primary-hover: #172554;
+  --primary-light: #eff6ff;
+  --primary-border: #bfdbfe;
+  
+  --emerald: #059669;
+  --emerald-light: #ecfdf5;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --amber: #d97706;
+  --amber-light: #fffbeb;
+
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --border-color: #e2e8f0;
+  --border-focus: #2563eb;
+
+  --text-title: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --danger: #dc2626;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-body);
+  line-height: 1.45;
+  overflow-x: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   APP HEADER: Clean, No Logo Box, Hamburger Menu + Brand Title
+   ========================================================================== */
+.app-header {
+  background: #0f172a;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-toggle-btn {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.menu-toggle-btn:hover {
+  background: #334155;
+}
+
+.brand-clickable {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.brand-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.brand-badge {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   SLIDE-OUT NAVIGATION DRAWER
+   ========================================================================== */
+.drawer-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(3px);
+  z-index: 150;
+  transition: opacity 0.2s ease;
+}
+
+.nav-drawer {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 280px;
+  background: #0f172a;
+  color: #ffffff;
+  z-index: 160;
+  padding: 20px;
+  box-shadow: 4px 0 25px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.drawer-header h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.drawer-close-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawer-link {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.drawer-link:hover {
+  background: #1e293b;
+  color: #ffffff;
+}
+
+.drawer-link.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   PAGE VIEWS & WRAPPER
+   ========================================================================== */
+.main-wrapper {
+  min-height: calc(100vh - 65px);
+  padding: 14px 12px 60px 12px;
+}
+
+@media (min-width: 768px) {
+  .main-wrapper {
+    padding: 20px 24px 70px 24px;
+  }
+}
+
+.page-view {
+  display: none;
+}
+.page-view.active {
+  display: block;
+}
+
+.content-container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.content-container.narrow {
+  max-width: 680px;
+}
+
+/* ==========================================================================
+   PAGE 1: DASHBOARD / HOMEPAGE
+   ========================================================================== */
+.dashboard-hero-clean {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+  color: #ffffff;
+  padding: 24px 20px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+.dashboard-hero-clean h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.dashboard-hero-clean p {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.action-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.action-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.action-card.card-primary {
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+  border: 1.5px solid #bfdbfe;
+}
+
+.card-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dbeafe;
+  color: #1e40af;
+  flex-shrink: 0;
+}
+
+.icon-emerald { background: var(--emerald-light); color: var(--emerald); }
+.icon-purple { background: var(--purple-light); color: var(--purple); }
+.icon-amber { background: var(--amber-light); color: var(--amber); }
+
+.card-details {
+  flex: 1;
+}
+
+.card-details h3 {
+  font-size: 0.98rem;
+  color: var(--text-title);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.card-details p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.card-arrow {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  font-weight: bold;
+}
+
+.dashboard-widget {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.widget-header h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-title);
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   PAGE 2: ULTRA-COMPACT SALES BILL ENTRY (Single Screen / Fast Entry)
+   ========================================================================== */
+.billing-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.billing-compact-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.billing-compact-bar h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-title);
+  letter-spacing: -0.01em;
+}
+
+.btn-icon-reset {
+  background: #f1f5f9;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-icon-reset:hover {
+  background: #e2e8f0;
+  color: var(--danger);
+}
+
+/* Frame container */
+.compact-main-frame {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+  .compact-main-frame {
+    padding: 18px;
+  }
+}
+
+.frame-divider {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 14px 0;
+}
+
+/* ROW 1: 3 METAS IN 1 HORIZONTAL ROW (Wider Invoice No for SISM/26-27/49005, Same Date width shifted right, Compact Vehicle No) */
+.meta-row-three {
+  display: grid;
+  grid-template-columns: 1.18fr 0.87fr 0.95fr;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 520px) {
+  .meta-row-three {
+    grid-template-columns: 1.18fr 0.87fr 0.95fr;
+    gap: 5px;
+  }
+  .meta-row-three .form-field label {
+    font-size: 0.66rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .meta-row-three .form-field input {
+    padding: 6px 5px;
+    font-size: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  #invDatePicker {
+    padding: 6px 3px;
+    font-size: 0.73rem;
+  }
+}
+
+/* Very light watermark placeholder for Vehicle No & inputs */
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #cbd5e1 !important;
+  font-weight: 400 !important;
+  opacity: 1;
+}
+
+#vehicleNo::placeholder {
+  color: #d1d5db !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em;
+  opacity: 1;
+}
+
+/* Minimal More Options Inline */
+.more-opts-inline {
+  margin-top: 10px;
+}
+
+.btn-more-toggle-minimal {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+.btn-more-toggle-minimal:hover {
+  background: #f1f5f9;
+}
+
+.more-opts-panel {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.extra-grid-compact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+}
+
+/* ROW 2: CONSIGNEE & BUYER SIDE-BY-SIDE (Full symmetrical left & right borders) */
+.parties-split-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 560px) {
+  .parties-split-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.party-col {
+  background: #f8fafc;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.party-col-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.state-code-pair {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  width: 100%;
+  min-width: 0;
+}
+
+.state-field-grow {
+  flex: 1 1 0%;
+  min-width: 0;
+  margin-bottom: 0 !important;
+}
+
+.code-field-fixed {
+  flex: 0 0 70px;
+  min-width: 0;
+  margin-bottom: 0 !important;
+}
+
+/* ROW 3: COMPACT 2-LINE PRODUCT ITEMS (Matched Card Design & Balanced Box Sizes) */
+.products-compact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+}
+
+.prod-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prod-sec-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.items-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+}
+
+.compact-item-row {
+  background: #f8fafc;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.15s;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.compact-item-row:hover {
+  border-color: #cbd5e1;
+}
+
+/* Line 1: Description + HSN (Same size as Quantity box) + Delete */
+.item-line-1 {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  width: 100%;
+  min-width: 0;
+}
+
+.item-line-1 .item-desc-field {
+  flex: 1 1 0%;
+  min-width: 0;
+  margin-bottom: 0 !important;
+}
+
+.item-line-1 .item-desc-input {
+  width: 100%;
+  font-weight: 600;
+}
+
+.item-line-1 .item-hsn-field {
+  flex: 0 0 155px;
+  min-width: 0;
+  margin-bottom: 0 !important;
+}
+
+.item-line-1 .item-hsn-input {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.item-del-btn {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.item-del-btn:hover {
+  background: #fca5a5;
+}
+
+/* Line 2: Qty, Unit, Rate, Tax%, Total */
+.item-line-2 {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  width: 100%;
+  min-width: 0;
+}
+
+.item-line-2 .item-field-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+  min-width: 0;
+  margin-bottom: 0 !important;
+}
+
+.item-line-2 .item-field-wrap.fixed-unit {
+  flex: 0 0 95px;
+}
+
+.item-line-2 .item-field-wrap.fixed-tax {
+  flex: 0 0 95px;
+}
+
+.item-line-2 .item-total-field {
+  flex: 0 0 130px;
+  min-width: 0;
+  margin-bottom: 0 !important;
+}
+
+.item-total-badge {
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0 10px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .item-line-1 .item-hsn-field {
+    flex: 0 0 105px;
+  }
+  .item-line-2 {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .item-line-2 .item-field-wrap {
+    flex: 1 1 30%;
+  }
+  .item-line-2 .item-field-wrap.fixed-unit,
+  .item-line-2 .item-field-wrap.fixed-tax {
+    flex: 1 1 25%;
+  }
+  .item-line-2 .item-total-field {
+    flex: 1 1 40%;
+  }
+}
+
+/* ROW 4: TAX & FINANCIAL SUMMARY */
+.tax-summary-compact {
+  background: #f8fafc;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tax-state-badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text-body);
+  margin-bottom: 6px;
+}
+
+.btn-tax-override {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.manual-tax-box {
+  margin-bottom: 8px;
+}
+
+.manual-tax-box select {
+  width: 100%;
+  padding: 6px;
+  font-size: 0.82rem;
+}
+
+.summary-line-compact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.grand-pill {
+  background: #1e3a8a;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.grand-pill strong {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.words-tiny {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* FORM FIELDS BASE (Strict width:100% & min-width:0 so mobile grid items never overflow) */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 8px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.form-field:last-child {
+  margin-bottom: 0;
+}
+
+.form-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.req {
+  color: var(--danger);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 7px 10px;
+  font-size: 0.85rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: var(--text-title);
+  font-family: inherit;
+  transition: all 0.15s ease;
+  min-height: 36px;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+.form-row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+}
+
+/* STICKY BOTTOM ACTION BAR */
+.sticky-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.06);
+  padding: 10px 16px;
+  z-index: 90;
+}
+
+.action-bar-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+}
+
+.btn-action {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.btn-action-lg {
+  flex: 2;
+  padding: 11px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  border-color: var(--border-color);
+  color: var(--text-body);
+}
+.btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+.btn-success {
+  background: #16a34a;
+  color: #ffffff;
+}
+.btn-success:hover {
+  background: #15803d;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ==========================================================================
+   DIRECT NATIVE PRINT CONTAINER (Hidden on screen, active on Print / PDF)
+   ========================================================================== */
+.print-only-container {
+  display: none;
+}
+
+/* ==========================================================================
+   EXACT 1:1 TALLY A4 PRINT SHEET (STRETCHED TO ~80-85% HEIGHT)
+   ========================================================================== */
+.tally-paper-sheet {
+  background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  color: #000000;
+}
+
+.tally-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 13pt;
+  padding: 0 0 6px 0;
+  letter-spacing: 0.3px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.tally-invoice {
+  width: 100%;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.25;
+  color: #000000;
+}
+
+/* TOP MASTER TABLE: 3 HORIZONTAL BANDS + 47% VERTICAL LINE ALIGNED WITH HSN/SAC */
+.tally-top-master-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border-bottom: 1px solid #000000;
+}
+
+.tally-top-master-table td {
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.tally-box {
+  padding: 5px 7px;
+  font-size: 9pt;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+}
+
+/* Band 1: Company Box - tight spacing so 3 right rows align flush with State Name: Kerala */
+.company-box {
+  line-height: 1.2;
+  padding: 4px 7px;
+}
+
+.comp-name {
+  font-size: 11.5pt;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.comp-address {
+  font-size: 8.8pt;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.comp-udayam {
+  font-size: 8.8pt;
+  line-height: 1.2;
+}
+
+.comp-gstin, .comp-state {
+  font-size: 8.8pt;
+  line-height: 1.2;
+}
+
+/* Band 2 & Band 3: Consignee & Buyer Boxes */
+.consignee-box {
+  padding: 5px 7px;
+}
+
+.buyer-box {
+  padding: 5px 7px;
+  border-bottom: 1px solid #000000 !important;
+}
+
+.box-caption {
+  font-size: 8.2pt;
+  color: #222222;
+  margin-bottom: 2px;
+}
+
+.party-name {
+  font-size: 10.2pt;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.party-address {
+  font-size: 9pt;
+  line-height: 1.22;
+  margin-bottom: 3px;
+}
+
+.party-tax-line {
+  display: flex;
+  font-size: 9pt;
+  line-height: 1.22;
+}
+
+.party-tax-line .lbl {
+  width: 72px;
+}
+.party-tax-line .sep {
+  width: 10px;
+}
+.party-tax-line .val {
+  font-weight: bold;
+}
+
+/* Right Metadata Cells inside Top Master Table */
+.tally-top-master-table td.meta-cell {
+  border-bottom: 1px solid #000000;
+  border-right: 1px solid #000000;
+  padding: 3px 6px;
+  font-size: 8.5pt;
+}
+
+.tally-top-master-table tr td.meta-cell:last-child {
+  border-right: none;
+}
+
+/* Band 3 Row 7: Bill of Lading & Motor Vehicle No - compact height right under Band 2 */
+.compact-lading-row td.compact-meta-cell {
+  height: 30px;
+  padding: 3px 6px;
+}
+
+/* Band 3 Row 8: Terms of Delivery fills remaining space alongside Buyer Box */
+.terms-delivery-row td.terms-cell {
+  border-bottom: 1px solid #000000 !important;
+  height: auto;
+}
+
+.meta-label {
+  display: block;
+  font-size: 7.8pt;
+  color: #222222;
+  line-height: 1.15;
+}
+
+.meta-val {
+  display: block;
+  font-size: 9pt;
+  min-height: 14px;
+  line-height: 1.2;
+}
+
+.meta-val.bold-large {
+  font-size: 9.8pt;
+  font-weight: bold;
+}
+
+/* TALLY ITEMS TABLE (4% + 43% = 47% aligns with Top Vertical Divider right before HSN/SAC) */
+.tally-items-wrapper {
+  width: 100%;
+}
+
+.tally-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 9.2pt;
+  border-top: 1px solid #000000;
+}
+
+.tally-items-table th {
+  border-top: 1px solid #000000 !important;
+  border-bottom: 1px solid #000000 !important;
+  border-right: 1px solid #000000;
+  padding: 4px 5px;
+  font-size: 8.5pt;
+  font-weight: normal;
+  text-align: center;
+  background: #ffffff;
+}
+
+.tally-items-table th:last-child {
+  border-right: none;
+}
+
+.tally-items-table td {
+  padding: 4px 6px;
+  vertical-align: top;
+  font-size: 9.2pt;
+  box-sizing: border-box;
+}
+
+.col-sl { text-align: center; }
+.col-desc { text-align: left; }
+.col-hsn { text-align: left; }
+.col-qty { text-align: right; }
+.col-rate { text-align: right; }
+.col-per { text-align: center; }
+.col-amt { text-align: right; }
+
+.tally-items-table td.border-right {
+  border-right: 1px solid #000000;
+}
+
+.tally-tax-line-row td {
+  padding-top: 8px;
+  padding-bottom: 4px;
+}
+
+.tax-ledger-label {
+  text-align: right;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.italic-rate {
+  font-style: italic;
+}
+
+/* Vertical line stretch for items area */
+.tally-spacer-row td {
+  border-right: 1px solid #000000;
+  height: 135px;
+}
+.tally-spacer-row td:last-child {
+  border-right: none;
+}
+
+.items-total-row td {
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  font-weight: bold;
+  padding: 4px 6px;
+  font-size: 9.5pt;
+}
+
+/* WORDS BOX */
+.tally-words-box {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #000000;
+  padding: 4px 7px;
+  font-size: 9pt;
+}
+
+.words-label {
+  font-size: 8pt;
+  color: #222222;
+}
+
+.words-text {
+  font-size: 9.8pt;
+  font-weight: bold;
+}
+
+.words-right {
+  font-size: 8.5pt;
+  font-style: italic;
+  align-self: flex-start;
+}
+
+/* TAX BREAKDOWN TABLE */
+.tally-tax-breakdown-wrapper {
+  width: 100%;
+  border-bottom: 1px solid #000000;
+}
+
+.tally-tax-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 8.5pt;
+}
+
+.tally-tax-table th {
+  border-bottom: 1px solid #000000;
+  border-right: 1px solid #000000;
+  padding: 3px 5px;
+  text-align: center;
+  font-size: 8pt;
+  font-weight: normal;
+}
+
+.tally-tax-table td {
+  border-bottom: 1px solid #000000;
+  border-right: 1px solid #000000;
+  padding: 3px 6px;
+  font-size: 8.5pt;
+}
+
+.tally-tax-table tr:last-child td {
+  border-bottom: none;
+}
+
+.tally-tax-table td:last-child,
+.tally-tax-table th:last-child {
+  border-right: none;
+}
+
+/* TAX WORDS BOX */
+.tally-tax-words-box {
+  padding: 5px 7px 36px 7px;
+  font-size: 9pt;
+}
+
+.tally-tax-words-box .label {
+  font-size: 8.5pt;
+}
+
+/* FOOTER: DECLARATION (47%) ON LEFT, SEAL & SIGNATURE (53%) ON RIGHT */
+.tally-footer-grid {
+  display: flex;
+  min-height: 85px;
+}
+
+.declaration-box {
+  width: 47%;
+  padding: 5px 7px;
+  font-size: 8.5pt;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.footer-caption {
+  text-decoration: underline;
+  font-size: 8pt;
+  margin-bottom: 2px;
+}
+
+.declaration-text {
+  font-size: 8pt;
+  line-height: 1.25;
+}
+
+.signature-box {
+  width: 53%;
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  padding: 5px 7px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.for-company {
+  text-align: right;
+  font-size: 9pt;
+  font-weight: bold;
+}
+
+.auth-elements-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 8px;
+}
+
+.seal-spot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+}
+
+.seal-image-wrap {
+  width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seal-image-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.sign-spot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.sign-image-wrap {
+  width: 120px;
+  height: 45px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.sign-image-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.signatory-label {
+  font-size: 8.8pt;
+  text-align: right;
+  padding-top: 2px;
+}
+
+.tally-bottom-note {
+  text-align: center;
+  font-size: 8pt;
+  padding: 5px 0 0 0;
+  color: #000000;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* HELPER ALIGNMENTS */
+.text-right { text-align: right !important; }
+.text-center { text-align: center !important; }
+.bold { font-weight: bold !important; }
+
+/* ==========================================================================
+   PARTY MASTER & INVOICE HISTORY & SETTINGS
+   ========================================================================== */
+.page-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.page-top-row h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-title);
+}
+
+.page-top-row p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.party-cards-container,
+.history-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.party-card-item,
+.history-card-item {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.party-card-head,
+.history-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.party-card-title,
+.history-card-inv {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-title);
+}
+
+.party-card-gstin {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+.party-card-addr {
+  font-size: 0.8rem;
+  color: var(--text-body);
+  white-space: pre-line;
+}
+
+.history-card-amt {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.history-card-date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.card-actions-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.search-input-box input {
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  width: 240px;
+}
+
+/* Modal styling */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(2px);
+  z-index: 180;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  max-width: 480px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.modal-head h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* Upload Dropzones */
+.upload-dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  text-align: center;
+  cursor: pointer;
+  background: #f8fafc;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.upload-dropzone:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.seal-upload-preview {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seal-upload-preview img {
+  max-height: 50px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+/* ==========================================================================
+   GENERIC LOGIN SCREEN OVERLAY (No Company Name - Universal Billing Portal)
+   ========================================================================== */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.login-overlay.hidden {
+  display: none !important;
+}
+
+.login-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 390px;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
+}
+
+.login-icon-badge {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 14px;
+  border-radius: 14px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px #bfdbfe;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.login-header h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 5px;
+  letter-spacing: -0.02em;
+}
+
+.login-header p {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-input-wrap input {
+  padding-right: 40px !important;
+  width: 100%;
+}
+
+.btn-eye-toggle {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.btn-eye-toggle:hover {
+  color: #1e293b;
+  background: #f1f5f9;
+}
+
+.login-error-box {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 9px 12px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.btn-login-submit {
+  width: 100%;
+  margin-top: 6px;
+  padding: 11px 16px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.header-logout-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 6px 11px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.header-logout-btn:hover {
+  background: rgba(220, 38, 38, 0.85);
+  border-color: rgba(220, 38, 38, 0.9);
+}
+
+.settings-section-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.settings-section-sub {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin: 0 0 14px;
+}
+
+.settings-menu-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-back-settings {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  color: #1e293b;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 7px 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 14px;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.btn-back-settings:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.backup-summary-box {
+  background: #f8fafc;
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.backup-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 0.84rem;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.backup-stat-row:last-child {
+  border-bottom: none;
+}
+
+.backup-block-card {
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 14px;
+  background: #ffffff;
+}
+
+/* ==========================================================================
+   PRINT MEDIA RULES: EXACT 1:1 A4 NATIVE OUTPUT (FULL WIDTH & TALL HEIGHT)
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 5mm 6mm;
+  }
+
+  body, html {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .no-print,
+  #loginOverlay,
+  .app-header,
+  .nav-drawer,
+  .drawer-backdrop,
+  .sticky-action-bar,
+  #view-home,
+  #view-billing,
+  #view-parties,
+  #view-history,
+  #view-settings,
+  #partyModal {
+    display: none !important;
+  }
+
+  .main-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .print-only-container {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .tally-paper-sheet {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .tally-invoice {
+    border: 1px solid #000000 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .tally-spacer-row td {
+    height: 135px !important;
+  }
+}
+
+</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- GENERIC LOGIN SCREEN OVERLAY (No Company Name - Universal Billing Portal) -->
+  <div id="loginOverlay" class="login-overlay no-print">
+    <div class="login-card">
+      <div class="login-icon-badge">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div class="login-header">
+        <h2>Billing App Login</h2>
+        <p>Sign in with your username and password</p>
+      </div>
+
+      <div id="loginErrorMsg" class="login-error-box hidden"></div>
+
+      <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+        <div class="form-field">
+          <label>Username</label>
+          <input type="text" id="loginUsername" placeholder="Enter username" required autocomplete="username" autocapitalize="none" spellcheck="false">
+        </div>
+        <div class="form-field">
+          <label>Password</label>
+          <div class="password-input-wrap">
+            <input type="password" id="loginPassword" placeholder="Enter password" required autocomplete="current-password">
+            <button type="button" class="btn-eye-toggle" onclick="togglePasswordField('loginPassword', this)">Show</button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-login-submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Top App Header: Clean, Logo removed, Only Hamburger Menu & Brand Title -->
+  <header class="app-header no-print">
+    <div class="nav-container">
+      <div class="brand-group">
+        <button class="menu-toggle-btn" onclick="toggleNavDrawer()" aria-label="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="brand-clickable" onclick="navigateTo('home')">
+          <span class="brand-title" id="headerCompName">GST Billing Portal</span>
+          <span class="brand-badge">Tax Invoice Portal</span>
+        </div>
+      </div>
+      <button type="button" class="header-logout-btn" onclick="logoutApp()" title="Logout">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide-out Navigation Drawer -->
+  <div id="navDrawerBackdrop" class="drawer-backdrop hidden no-print" onclick="toggleNavDrawer()"></div>
+  <aside id="navDrawer" class="nav-drawer hidden no-print">
+    <div class="drawer-header">
+      <h4 id="drawerCompName">GST Billing Portal</h4>
+      <button class="drawer-close-btn" onclick="toggleNavDrawer()">&times;</button>
+    </div>
+    <div class="drawer-links">
+      <button class="drawer-link active" id="dlink-home" onclick="navFromDrawer('home')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Dashboard</span>
+      </button>
+      <button class="drawer-link" id="dlink-billing" onclick="navFromDrawer('billing')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Sales Bill Entry</span>
+      </button>
+      <button class="drawer-link" id="dlink-parties" onclick="navFromDrawer('parties')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        <span>Party Master</span>
+      </button>
+      <button class="drawer-link" id="dlink-history" onclick="navFromDrawer('history')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Invoice History</span>
+      </button>
+      <button class="drawer-link" id="dlink-settings" onclick="navFromDrawer('settings')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Settings</span>
+      </button>
+      <button class="drawer-link" style="color:#dc2626; margin-top:8px;" onclick="logoutApp()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main View Container -->
+  <main class="main-wrapper">
+
+    <!-- PAGE 1: DASHBOARD / HOME (Cleaned Hero) -->
+    <section id="view-home" class="page-view active no-print">
+      <div class="content-container">
+        
+        <div class="dashboard-hero-clean">
+          <h2 id="heroCompName">GST Billing Portal</h2>
+          <p>Generate, manage, and print GST Tax Invoices in exact Tally format.</p>
+        </div>
+
+        <div class="action-grid">
+          <div class="action-card card-primary" onclick="startNewInvoice()">
+            <div class="card-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <div class="card-details">
+              <h3>Sales Bill Entry</h3>
+              <p>Create invoice with vehicle details &amp; auto GST.</p>
+            </div>
+            <span class="card-arrow">&rarr;</span>
+          </div>
+
+          <div class="action-card" onclick="navigateTo('parties')">
+            <div class="card-icon-box icon-emerald">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+            </div>
+            <div class="card-details">
+              <h3>Party Master (Ledgers)</h3>
+              <p>Add &amp; manage customers, addresses, and GSTIN.</p>
+            </div>
+            <span class="card-arrow">&rarr;</span>
+          </div>
+
+          <div class="action-card" onclick="navigateTo('history')">
+            <div class="card-icon-box icon-purple">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="card-details">
+              <h3>Invoice History</h3>
+              <p>Search, view, and reprint previously created bills.</p>
+            </div>
+            <span class="card-arrow">&rarr;</span>
+          </div>
+
+          <div class="action-card" onclick="navigateTo('settings')">
+            <div class="card-icon-box icon-amber">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <div class="card-details">
+              <h3>Company Settings</h3>
+              <p>Configure address &amp; upload seal &amp; signature.</p>
+            </div>
+            <span class="card-arrow">&rarr;</span>
+          </div>
+        </div>
+
+        <div class="dashboard-widget">
+          <div class="widget-header">
+            <h3>Recent Invoices</h3>
+            <button class="btn-link" onclick="navigateTo('history')">View All &rarr;</button>
+          </div>
+          <div id="homeRecentInvoicesList" class="recent-list"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAGE 2: SALES BILL ENTRY (Ultra-Compact Mobile Screen) -->
+    <section id="view-billing" class="page-view no-print">
+      <div class="billing-container">
+        
+        <!-- Clean Compact Header -->
+        <div class="billing-compact-bar">
+          <h2>Sales Bill Entry</h2>
+          <button type="button" class="btn-icon-reset" onclick="resetFormForNewInvoice()" title="Reset Bill">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            <span>Reset</span>
+          </button>
+        </div>
+
+        <form id="billingForm" onsubmit="event.preventDefault();" class="billing-flow-form">
+          
+          <!-- SINGLE FRAME: ALL BILL DATA -->
+          <div class="form-card compact-main-frame">
+
+            <!-- ROW 1: INVOICE NO + INVOICE DATE + VEHICLE NO (ALL IN 1 ROW) -->
+            <div class="meta-row-three">
+              <div class="form-field">
+                <label>Invoice No <span class="req">*</span></label>
+                <input type="text" id="invNo" value="SISM/26-27/48" required>
+              </div>
+
+              <div class="form-field">
+                <label>Date <span class="req">*</span></label>
+                <input type="date" id="invDatePicker" onchange="onDatePicked(this.value)" required>
+                <input type="hidden" id="invDate" value="16-Jul-26">
+              </div>
+
+              <div class="form-field">
+                <label>Motor Vehicle No <span class="req">*</span></label>
+                <input type="text" id="vehicleNo" value="" required placeholder="TN 30 AF 0045" style="text-transform:uppercase; font-weight:700;">
+              </div>
+            </div>
+
+            <!-- Compact More Options Toggle -->
+            <div class="more-opts-inline">
+              <button type="button" class="btn-more-toggle-minimal" onclick="toggleMoreOptions()">
+                <span>More Options (Dispatch, Order &amp; Delivery)</span>
+                <span id="moreOptionsArrow">▼</span>
+              </button>
+
+              <div id="moreOptionsContent" class="more-opts-panel hidden">
+                <div class="extra-grid-compact">
+                  <div class="form-field"><label>Delivery Note</label><input type="text" id="deliveryNote"></div>
+                  <div class="form-field"><label>Payment Terms</label><input type="text" id="paymentTerms"></div>
+                  <div class="form-field"><label>Ref No &amp; Date</label><input type="text" id="refNoDate"></div>
+                  <div class="form-field"><label>Other Ref</label><input type="text" id="otherRef"></div>
+                  <div class="form-field"><label>Buyer Order No</label><input type="text" id="buyerOrderNo"></div>
+                  <div class="form-field"><label>Order Date</label><input type="date" id="buyerOrderDatePicker" onchange="onOrderDatePicked(this.value)"><input type="hidden" id="buyerOrderDate"></div>
+                  <div class="form-field"><label>Dispatch Doc No</label><input type="text" id="dispatchDocNo"></div>
+                  <div class="form-field"><label>Delivery Note Date</label><input type="date" id="deliveryNoteDatePicker" onchange="onDeliveryDatePicked(this.value)"><input type="hidden" id="deliveryNoteDate"></div>
+                  <div class="form-field"><label>Dispatched Through</label><input type="text" id="dispatchedThrough"></div>
+                  <div class="form-field"><label>Destination</label><input type="text" id="destination"></div>
+                  <div class="form-field"><label>LR / RR No</label><input type="text" id="billOfLading"></div>
+                  <div class="form-field"><label>Terms of Delivery</label><input type="text" id="termsOfDelivery"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="frame-divider"></div>
+
+            <!-- ROW 2: CONSIGNEE (SHIP TO) & BUYER (BILL TO) SIDE-BY-SIDE IN 1 FRAME -->
+            <div class="parties-split-row">
+              
+              <!-- Consignee (Ship to) - Left Column -->
+              <div class="party-col">
+                <div class="party-col-title">Consignee (Ship to)</div>
+                <div class="form-field">
+                  <label>Consignee Name</label>
+                  <input type="text" id="consigneeName" value="K P J Timbers" placeholder="Type or select..." list="partiesDatalistConsignee" oninput="onConsigneeNameInput(this.value)">
+                  <datalist id="partiesDatalistConsignee"></datalist>
+                </div>
+                <div class="form-field">
+                  <label>Address</label>
+                  <textarea id="consigneeAddress" rows="2">49, JOTHI TALKIES ROAD&#10;Ammapettai, Salem, Tamil Nadu 636003</textarea>
+                </div>
+                <div class="form-field">
+                  <label>GSTIN</label>
+                  <input type="text" id="consigneeGstin" value="33AAQFK2372M1ZX" oninput="autoDetectStateFromGstin(this.value, 'consigneeState', 'consigneeStateCode')" style="text-transform:uppercase;">
+                </div>
+                <div class="state-code-pair">
+                  <div class="form-field state-field-grow">
+                    <label>State Name</label>
+                    <input type="text" id="consigneeState" value="Tamil Nadu" placeholder="State">
+                  </div>
+                  <div class="form-field code-field-fixed">
+                    <label>Code</label>
+                    <input type="text" id="consigneeStateCode" value="33" placeholder="Code" style="text-align:center;">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Buyer (Bill to) - Right Column -->
+              <div class="party-col">
+                <div class="party-col-title">Buyer (Bill to)</div>
+                <div class="form-field">
+                  <label>Buyer Name <span class="req">*</span></label>
+                  <input type="text" id="buyerName" value="K P J Timbers" placeholder="Type or select..." list="partiesDatalist" oninput="onBuyerNameInput(this.value)" required>
+                  <datalist id="partiesDatalist"></datalist>
+                </div>
+                <div class="form-field">
+                  <label>Address</label>
+                  <textarea id="buyerAddress" rows="2">49, JOTHI TALKIES ROAD&#10;Ammapettai, Salem, Tamil Nadu 636003</textarea>
+                </div>
+                <div class="form-field">
+                  <label>GSTIN</label>
+                  <input type="text" id="buyerGstin" value="33AAQFK2372M1ZX" oninput="onGstinInput(this.value)" style="text-transform:uppercase;">
+                </div>
+                <div class="state-code-pair">
+                  <div class="form-field state-field-grow">
+                    <label>State Name</label>
+                    <input type="text" id="buyerState" value="Tamil Nadu" placeholder="State">
+                  </div>
+                  <div class="form-field code-field-fixed">
+                    <label>Code</label>
+                    <input type="text" id="buyerStateCode" value="33" oninput="onStateCodeChange()" placeholder="Code" style="text-align:center;">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="frame-divider"></div>
+
+            <!-- ROW 3: PRODUCT ITEMS IN COMPACT 2-LINE ROWS -->
+            <div class="products-compact-section">
+              <div class="prod-header-row">
+                <span class="prod-sec-title">Products &amp; Items</span>
+                <button type="button" class="btn btn-sm btn-primary" onclick="addItemRow()">+ Add Item</button>
+              </div>
+
+              <div id="itemsContainer" class="items-card-list"></div>
+            </div>
+
+            <div class="frame-divider"></div>
+
+            <!-- ROW 4: TAX & FINANCIAL SUMMARY -->
+            <div class="tax-summary-compact">
+              <div class="tax-state-badge" id="taxStatusDisplay">
+                <span id="taxModeText">Interstate &rarr; <strong>IGST (18%)</strong></span>
+                <button type="button" class="btn-tax-override" onclick="toggleManualTaxOption()">Change</button>
+              </div>
+
+              <div id="manualTaxControls" class="manual-tax-box hidden">
+                <select id="manualTaxType" onchange="onManualTaxChange()">
+                  <option value="AUTO">Auto Detect by State Code</option>
+                  <option value="IGST">Force IGST (Interstate)</option>
+                  <option value="CGST_SGST">Force CGST + SGST (Intrastate)</option>
+                </select>
+              </div>
+
+              <div class="summary-line-compact">
+                <span>Taxable: <strong id="calc_taxable">₹ 95,200.00</strong></span>
+                <span id="calc_tax_breakdown_label">Tax: <strong id="calc_total_tax_amount">₹ 17,136.00</strong></span>
+                <span class="grand-pill">Total: <strong id="calc_total">₹ 1,12,336.00</strong></span>
+              </div>
+              <div class="words-tiny" id="calc_words">INR One Lakh Twelve Thousand Three Hundred Thirty Six Only</div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Margin for Fixed Bar -->
+          <div style="height: 75px;"></div>
+
+          <!-- Sticky Action Bar -->
+          <div class="sticky-action-bar">
+            <div class="action-bar-inner">
+              <button type="button" class="btn btn-secondary btn-action" onclick="saveCurrentInvoice()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn btn-primary btn-action-lg" onclick="triggerDirectPrint()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                <span>Print / Save PDF</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </section>
+
+    <!-- DIRECT PRINT SHEET (Hidden on screen, rendered natively on Print / PDF) -->
+    <div id="printAreaContainer" class="print-only-container">
+      <div class="tally-paper-sheet" id="tallySheet">
+        <div class="tally-invoice">
+          
+          <div class="tally-title">Tax Invoice</div>
+
+          <!-- Top Master Table: 3 Locked Horizontal Bands + 47% Vertical Line Aligned to HSN/SAC -->
+          <table class="tally-top-master-table">
+            <colgroup>
+              <col style="width: 47%;">
+              <col style="width: 26.5%;">
+              <col style="width: 26.5%;">
+            </colgroup>
+            <tbody>
+              <!-- BAND 1: Company Box (Left, rowspan=3) + First 3 Rows (Right) -->
+              <tr>
+                <td class="tally-box company-box" rowspan="3">
+                  <div class="comp-name" id="p_compName"></div>
+                  <div class="comp-address" id="p_compAddress"></div>
+                  <div class="comp-udayam" id="p_compUdayam"></div>
+                  <div class="comp-gstin">GSTIN/UIN: <span id="p_compGstin"></span></div>
+                  <div class="comp-state">State Name : <span id="p_compState"></span>, Code : <span id="p_compStateCode"></span></div>
+                </td>
+                <td class="meta-cell">
+                  <span class="meta-label">Invoice No.</span>
+                  <span class="meta-val bold-large" id="p_invNo">SISM/26-27/48</span>
+                </td>
+                <td class="meta-cell">
+                  <span class="meta-label">Dated</span>
+                  <span class="meta-val bold-large" id="p_invDate">16-Jul-26</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="meta-cell">
+                  <span class="meta-label">Delivery Note</span>
+                  <span class="meta-val" id="p_deliveryNote">&nbsp;</span>
+                </td>
+                <td class="meta-cell">
+                  <span class="meta-label">Mode/Terms of Payment</span>
+                  <span class="meta-val" id="p_paymentTerms">&nbsp;</span>
+                </td>
+              </tr>
+              <tr class="band-bottom-row">
+                <td class="meta-cell">
+                  <span class="meta-label">Reference No. &amp; Date.</span>
+                  <span class="meta-val" id="p_refNoDate">&nbsp;</span>
+                </td>
+                <td class="meta-cell">
+                  <span class="meta-label">Other References</span>
+                  <span class="meta-val" id="p_otherRef">&nbsp;</span>
+                </td>
+              </tr>
+
+              <!-- BAND 2: Consignee (Ship to) Box (Left, rowspan=3) + Next 3 Rows (Right) -->
+              <tr>
+                <td class="tally-box consignee-box" rowspan="3">
+                  <div class="box-caption">Consignee (Ship to)</div>
+                  <div class="party-name" id="p_consigneeName">K P J Timbers</div>
+                  <div class="party-address" id="p_consigneeAddress">
+                    49, JOTHI TALKIES ROAD<br>
+                    Ammapettai, Salem<br>
+                    Salem, Tamil Nadu<br>
+                    636003
+                  </div>
+                  <div class="party-tax-line">
+                    <span class="lbl">GSTIN/UIN</span>
+                    <span class="sep">:</span>
+                    <span class="val" id="p_consigneeGstin">33AAQFK2372M1ZX</span>
+                  </div>
+                  <div class="party-tax-line">
+                    <span class="lbl">State Name</span>
+                    <span class="sep">:</span>
+                    <span class="val" id="p_consigneeStateLine">Tamil Nadu, Code : 33</span>
+                  </div>
+                </td>
+                <td class="meta-cell">
+                  <span class="meta-label">Buyer’s Order No.</span>
+                  <span class="meta-val" id="p_buyerOrderNo">&nbsp;</span>
+                </td>
+                <td class="meta-cell">
+                  <span class="meta-label">Dated</span>
+                  <span class="meta-val" id="p_buyerOrderDate">&nbsp;</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="meta-cell">
+                  <span class="meta-label">Dispatch Doc No.</span>
+                  <span class="meta-val" id="p_dispatchDocNo">&nbsp;</span>
+                </td>
+                <td class="meta-cell">
+                  <span class="meta-label">Delivery Note Date</span>
+                  <span class="meta-val" id="p_deliveryNoteDate">&nbsp;</span>
+                </td>
+              </tr>
+              <tr class="band-bottom-row">
+                <td class="meta-cell">
+                  <span class="meta-label">Dispatched through</span>
+                  <span class="meta-val" id="p_dispatchedThrough">&nbsp;</span>
+                </td>
+                <td class="meta-cell">
+                  <span class="meta-label">Destination</span>
+                  <span class="meta-val" id="p_destination">&nbsp;</span>
+                </td>
+              </tr>
+
+              <!-- BAND 3: Buyer (Bill to) Box (Left, rowspan=2) + Remaining 2 Rows (Right) -->
+              <tr class="compact-lading-row">
+                <td class="tally-box buyer-box" rowspan="2">
+                  <div class="box-caption">Buyer (Bill to)</div>
+                  <div class="party-name" id="p_buyerName">K P J Timbers</div>
+                  <div class="party-address" id="p_buyerAddress">
+                    49, JOTHI TALKIES ROAD<br>
+                    Ammapettai, Salem<br>
+                    Salem, Tamil Nadu<br>
+                    636003
+                  </div>
+                  <div class="party-tax-line">
+                    <span class="lbl">GSTIN/UIN</span>
+                    <span class="sep">:</span>
+                    <span class="val" id="p_buyerGstin">33AAQFK2372M1ZX</span>
+                  </div>
+                  <div class="party-tax-line">
+                    <span class="lbl">State Name</span>
+                    <span class="sep">:</span>
+                    <span class="val" id="p_buyerStateLine">Tamil Nadu, Code : 33</span>
+                  </div>
+                </td>
+                <td class="meta-cell compact-meta-cell">
+                  <span class="meta-label">Bill of Lading/LR-RR No.</span>
+                  <span class="meta-val" id="p_billOfLading">&nbsp;</span>
+                </td>
+                <td class="meta-cell compact-meta-cell">
+                  <span class="meta-label">Motor Vehicle No.</span>
+                  <span class="meta-val bold-large" id="p_vehicleNo">TN 30 AF 0045</span>
+                </td>
+              </tr>
+              <tr class="terms-delivery-row">
+                <td class="meta-cell full-span terms-cell" colspan="2">
+                  <span class="meta-label">Terms of Delivery</span>
+                  <span class="meta-val" id="p_termsOfDelivery">&nbsp;</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Main Items Table: 4% + 43% = 47% (Matches Top Vertical Line Right Before HSN/SAC) -->
+          <div class="tally-items-wrapper">
+            <table class="tally-items-table">
+              <colgroup>
+                <col style="width: 4%;">
+                <col style="width: 43%;">
+                <col style="width: 9%;">
+                <col style="width: 13%;">
+                <col style="width: 11%;">
+                <col style="width: 6%;">
+                <col style="width: 14%;">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="col-sl">Sl<br>No.</th>
+                  <th class="col-desc">Description of Goods</th>
+                  <th class="col-hsn">HSN/SAC</th>
+                  <th class="col-qty">Quantity</th>
+                  <th class="col-rate">Rate</th>
+                  <th class="col-per">per</th>
+                  <th class="col-amt">Amount</th>
+                </tr>
+              </thead>
+              <tbody id="p_itemsBody"></tbody>
+              <tfoot>
+                <tr class="items-total-row">
+                  <td class="border-right"></td>
+                  <td class="text-right bold border-right">Total</td>
+                  <td class="border-right"></td>
+                  <td class="text-right bold border-right" id="p_totalQty">13.600 CBM</td>
+                  <td class="border-right"></td>
+                  <td class="border-right"></td>
+                  <td class="text-right bold" id="p_totalAmount">₹ 1,12,336.00</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <div class="tally-words-box">
+            <div class="words-left">
+              <div class="words-label">Amount Chargeable (in words)</div>
+              <div class="words-text bold" id="p_amountInWords">INR One Lakh Twelve Thousand Three Hundred Thirty Six Only</div>
+            </div>
+            <div class="words-right"><span>E. &amp; O.E</span></div>
+          </div>
+
+          <div class="tally-tax-breakdown-wrapper" id="p_taxBreakdownWrapper"></div>
+
+          <div class="tally-tax-words-box">
+            <span class="label">Tax Amount (in words) :</span>
+            <span class="value bold" id="p_taxAmountInWords">INR Seventeen Thousand One Hundred Thirty Six Only</span>
+          </div>
+
+          <!-- Footer: Declaration (47%) on Left, Seal & Signature (53%) on Right -->
+          <div class="tally-footer-grid">
+            <div class="declaration-box">
+              <div class="footer-caption">Declaration</div>
+              <div class="declaration-text">
+                We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.
+              </div>
+            </div>
+
+            <div class="signature-box">
+              <div class="for-company">for <span id="p_signCompName"></span></div>
+              
+              <div class="auth-elements-row">
+                <div class="seal-spot">
+                  <div class="seal-image-wrap" id="p_sealImageWrap"></div>
+                </div>
+
+                <div class="sign-spot">
+                  <div class="sign-image-wrap" id="p_signImageWrap"></div>
+                  <div class="signatory-label">Authorised Signatory</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="tally-bottom-note">This is a Computer Generated Invoice</div>
+      </div>
+    </div>
+
+    <!-- PAGE 4: PARTY MASTER -->
+    <section id="view-parties" class="page-view no-print">
+      <div class="content-container">
+        <div class="page-top-row">
+          <div>
+            <h2>Party Master (Customer Ledgers)</h2>
+            <p>Save customer details once. They will auto-suggest while typing bills.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openAddPartyModal()">+ Add New Party</button>
+        </div>
+        <div class="party-cards-container" id="partyListContainer"></div>
+      </div>
+    </section>
+
+    <!-- PAGE 5: INVOICE HISTORY -->
+    <section id="view-history" class="page-view no-print">
+      <div class="content-container">
+        <div class="page-top-row">
+          <div>
+            <h2>Invoice History</h2>
+            <p>View, reprint, or edit previously generated invoices.</p>
+          </div>
+          <div class="search-input-box">
+            <input type="text" id="historySearchInput" placeholder="Search invoices..." oninput="renderHistoryTable()">
+          </div>
+        </div>
+        <div class="history-cards-container" id="historyListContainer"></div>
+      </div>
+    </section>
+
+    <!-- PAGE 6: SETTINGS (3-BOX MENU + DEDICATED SUB-PANELS) -->
+    <section id="view-settings" class="page-view no-print">
+      <div class="content-container narrow">
+
+        <!-- MAIN SETTINGS MENU: 3 CLICKABLE BOXES -->
+        <div id="settings-main-menu">
+          <div class="page-top-row">
+            <div>
+              <h2>Settings</h2>
+              <p>Select an option below to configure company profile, security, or data backup.</p>
+            </div>
+          </div>
+
+          <div class="settings-menu-stack">
+            <!-- BOX 1: Company Profile Editing -->
+            <div class="action-card" onclick="openSettingsPanel('company')">
+              <div class="card-icon-box icon-amber">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>
+              </div>
+              <div class="card-details">
+                <h3>Company Profile Editing</h3>
+                <p>Add or edit company name, address, GSTIN, official seal &amp; signature.</p>
+              </div>
+              <span class="card-arrow">&rarr;</span>
+            </div>
+
+            <!-- BOX 2: Change Username & Password -->
+            <div class="action-card" onclick="openSettingsPanel('security')">
+              <div class="card-icon-box">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div class="card-details">
+                <h3>Change Username &amp; Password</h3>
+                <p>Update login username and password for the front login page.</p>
+              </div>
+              <span class="card-arrow">&rarr;</span>
+            </div>
+
+            <!-- BOX 3: Backup & Restore -->
+            <div class="action-card" onclick="openSettingsPanel('backup')">
+              <div class="card-icon-box icon-emerald">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </div>
+              <div class="card-details">
+                <h3>Backup &amp; Restore</h3>
+                <p>Download full data backup to your device or restore from backup file.</p>
+              </div>
+              <span class="card-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUB-PANEL 1: COMPANY PROFILE EDITING (Blank initially until user adds company) -->
+        <div id="settings-panel-company" class="hidden">
+          <button type="button" class="btn-back-settings" onclick="showSettingsMenu()">&larr; Back to Settings</button>
+
+          <div class="form-card">
+            <h3 class="settings-section-title">Company Profile Editing</h3>
+            <p class="settings-section-sub">Enter your company details, official seal, and authorised signature.</p>
+
+            <form id="settingsForm" onsubmit="saveCompanySettings(event)">
+              <div class="form-field">
+                <label>Company Name <span class="req">*</span></label>
+                <input type="text" id="set_compName" value="" placeholder="Enter company name" oninput="onCompanyNameLiveInput(this.value)" required>
+              </div>
+              <div class="form-field">
+                <label>Address</label>
+                <textarea id="set_compAddress" rows="3" placeholder="Enter company address"></textarea>
+              </div>
+              <div class="form-row-grid">
+                <div class="form-field">
+                  <label>UDAYAM Registration</label>
+                  <input type="text" id="set_compUdayam" value="" placeholder="Optional">
+                </div>
+                <div class="form-field">
+                  <label>GSTIN / UIN</label>
+                  <input type="text" id="set_compGstin" value="" placeholder="Enter GSTIN" oninput="autoDetectStateFromGstin(this.value, 'set_compState', 'set_compStateCode')" style="text-transform:uppercase;">
+                </div>
+              </div>
+              <div class="form-row-grid">
+                <div class="form-field">
+                  <label>State Name</label>
+                  <input type="text" id="set_compState" value="" placeholder="State">
+                </div>
+                <div class="form-field">
+                  <label>State Code</label>
+                  <input type="text" id="set_compStateCode" value="" placeholder="Code">
+                </div>
+              </div>
+
+              <!-- Separate 1: Seal Image -->
+              <div class="form-field">
+                <label>1. Official Seal / Stamp Image (സീൽ ഫോട്ടോ)</label>
+                <div class="upload-dropzone" onclick="document.getElementById('sealImgInput').click()">
+                  <span>Upload Official Seal</span>
+                  <input type="file" id="sealImgInput" accept="image/*" onchange="handleSealUpload(event)" style="display:none;">
+                </div>
+                <div id="sealPreviewContainer" class="seal-upload-preview"></div>
+              </div>
+
+              <!-- Separate 2: Signature Image -->
+              <div class="form-field">
+                <label>2. Authorised Signature Image (ഒപ്പ് ഫോട്ടോ)</label>
+                <div class="upload-dropzone" onclick="document.getElementById('signImgInput').click()">
+                  <span>Upload Authorised Signature</span>
+                  <input type="file" id="signImgInput" accept="image/*" onchange="handleSignUpload(event)" style="display:none;">
+                </div>
+                <div id="signPreviewContainer" class="seal-upload-preview"></div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Save Company Profile</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- SUB-PANEL 2: CHANGE USERNAME & PASSWORD -->
+        <div id="settings-panel-security" class="hidden">
+          <button type="button" class="btn-back-settings" onclick="showSettingsMenu()">&larr; Back to Settings</button>
+
+          <div class="form-card">
+            <h3 class="settings-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Change Username &amp; Password</span>
+            </h3>
+            <p class="settings-section-sub">Update the login username and password used to sign in on the front page.</p>
+
+            <form id="credentialsForm" onsubmit="saveLoginCredentials(event)">
+              <div class="form-row-grid">
+                <div class="form-field">
+                  <label>Login Username <span class="req">*</span></label>
+                  <input type="text" id="set_loginUsername" value="admin" required autocapitalize="none" spellcheck="false">
+                </div>
+                <div class="form-field">
+                  <label>Login Password <span class="req">*</span></label>
+                  <div class="password-input-wrap">
+                    <input type="password" id="set_loginPassword" value="admin123" required>
+                    <button type="button" class="btn-eye-toggle" onclick="togglePasswordField('set_loginPassword', this)">Show</button>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Update Username &amp; Password</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- SUB-PANEL 3: BACKUP & RESTORE -->
+        <div id="settings-panel-backup" class="hidden">
+          <button type="button" class="btn-back-settings" onclick="showSettingsMenu()">&larr; Back to Settings</button>
+
+          <div class="form-card">
+            <h3 class="settings-section-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Backup &amp; Restore Data</span>
+            </h3>
+            <p class="settings-section-sub">Keep a safe copy of all your bills, parties, and company settings, or restore them onto any new device or server.</p>
+
+            <div class="backup-summary-box">
+              <div class="backup-stat-row">
+                <span style="color:#64748b; font-weight:600;">Company Profile:</span>
+                <strong id="backup_compStatus" style="color:#0f172a;">Not Set Yet</strong>
+              </div>
+              <div class="backup-stat-row">
+                <span style="color:#64748b; font-weight:600;">Saved Parties:</span>
+                <strong id="backup_partiesCount" style="color:#0f172a;">0 Parties</strong>
+              </div>
+              <div class="backup-stat-row">
+                <span style="color:#64748b; font-weight:600;">Saved Invoices:</span>
+                <strong id="backup_invoicesCount" style="color:#0f172a;">0 Invoices</strong>
+              </div>
+            </div>
+
+            <div class="backup-block-card">
+              <div style="font-weight:700; font-size:0.88rem; color:#0f172a; margin-bottom:4px;">1. Download Full Backup</div>
+              <p style="font-size:0.78rem; color:#64748b; margin-bottom:12px;">Download all invoices, parties, company profile, seal &amp; signature into a single backup file (.json).</p>
+              <button type="button" class="btn btn-primary btn-block" onclick="downloadFullBackup()">Download Backup File (.json)</button>
+            </div>
+
+            <div class="backup-block-card" style="margin-bottom:0;">
+              <div style="font-weight:700; font-size:0.88rem; color:#0f172a; margin-bottom:4px;">2. Restore Data from Backup</div>
+              <p style="font-size:0.78rem; color:#64748b; margin-bottom:12px;">Select a previously downloaded backup file (.json) to restore all your data immediately.</p>
+              <div class="upload-dropzone" onclick="document.getElementById('backupRestoreInput').click()">
+                <span>Select Backup File (.json) to Restore</span>
+                <input type="file" id="backupRestoreInput" accept=".json,application/json" onchange="restoreFromBackupFile(event)" style="display:none;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: ADD / EDIT PARTY -->
+  <div id="partyModal" class="modal-backdrop hidden no-print">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="partyModalTitle">Add New Party</h3>
+        <button class="modal-close" onclick="closePartyModal()">&times;</button>
+      </div>
+      <form id="partyModalForm" onsubmit="savePartyModal(event)">
+        <input type="hidden" id="pm_id">
+        <div class="form-field">
+          <label>Party Name <span class="req">*</span></label>
+          <input type="text" id="pm_name" placeholder="e.g. K P J Timbers" required>
+        </div>
+        <div class="form-field">
+          <label>Address</label>
+          <textarea id="pm_address" rows="3"></textarea>
+        </div>
+        <div class="form-row-grid">
+          <div class="form-field">
+            <label>GSTIN / UIN</label>
+            <input type="text" id="pm_gstin" placeholder="33AAQFK2372M1ZX" oninput="autoDetectStateFromGstin(this.value, 'pm_state', 'pm_stateCode')" style="text-transform:uppercase;">
+          </div>
+          <div class="form-field">
+            <label>State &amp; Code</label>
+            <div class="state-code-pair">
+              <input type="text" id="pm_state" placeholder="Tamil Nadu">
+              <input type="text" id="pm_stateCode" placeholder="33" style="max-width:60px; text-align:center;">
+            </div>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-secondary" onclick="closePartyModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Party</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+/**
+ * SOUTH INDIAN SAW MILL - SALES BILLING & TALLY ENGINE
+ * Mobile-Optimized SaaS Billing System with 1:1 Tally Print Mirror
+ */
+
+const STATE_CODES = {
+  "01": "Jammu & Kashmir", "02": "Himachal Pradesh", "03": "Punjab", "04": "Chandigarh",
+  "05": "Uttarakhand", "06": "Haryana", "07": "Delhi", "08": "Rajasthan",
+  "09": "Uttar Pradesh", "10": "Bihar", "11": "Sikkim", "12": "Arunachal Pradesh",
+  "13": "Nagaland", "14": "Manipur", "15": "Mizoram", "16": "Tripura",
+  "17": "Meghalaya", "18": "Assam", "19": "West Bengal", "20": "Jharkhand",
+  "21": "Odisha", "22": "Chhattisgarh", "23": "Madhya Pradesh", "24": "Gujarat",
+  "27": "Maharashtra", "28": "Andhra Pradesh", "29": "Karnataka", "30": "Goa",
+  "31": "Lakshadweep", "32": "Kerala", "33": "Tamil Nadu", "34": "Puducherry",
+  "35": "Andaman & Nicobar", "36": "Telangana", "37": "Andhra Pradesh (New)", "38": "Ladakh"
+};
+
+const DEFAULT_COMPANY = {
+  name: "",
+  address: "",
+  udayam: "",
+  gstin: "",
+  state: "",
+  stateCode: "",
+  sealImg: "",
+  signImg: ""
+};
+
+const DEFAULT_PARTIES = [
+  {
+    id: "p1",
+    name: "K P J Timbers",
+    address: "49, JOTHI TALKIES ROAD\nAmmapettai, Salem\nSalem, Tamil Nadu\n636003",
+    gstin: "33AAQFK2372M1ZX",
+    state: "Tamil Nadu",
+    stateCode: "33"
+  },
+  {
+    id: "p2",
+    name: "Cochin Timber Traders",
+    address: "Building No. 12/450\nMarket Road, Aluva\nErnakulam, Kerala\n683101",
+    gstin: "32AAAAA0000A1Z5",
+    state: "Kerala",
+    stateCode: "32"
+  }
+];
+
+const DEFAULT_AUTH = {
+  username: "admin",
+  password: "admin123"
+};
+
+let memorySessionLoggedIn = false;
+
+function safeGetLocal(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch (err) {
+    return fallback;
+  }
+}
+
+function safeSetLocal(key, val) {
+  try {
+    localStorage.setItem(key, JSON.stringify(val));
+  } catch (err) {
+    // Ignore storage restriction on mobile content:// viewer
+  }
+}
+
+function safeGetSessionLogin() {
+  try {
+    return sessionStorage.getItem("sism_logged_in") === "true" || memorySessionLoggedIn;
+  } catch (err) {
+    return memorySessionLoggedIn;
+  }
+}
+
+function safeSetSessionLogin(loggedIn) {
+  memorySessionLoggedIn = loggedIn;
+  try {
+    if (loggedIn) {
+      sessionStorage.setItem("sism_logged_in", "true");
+    } else {
+      sessionStorage.removeItem("sism_logged_in");
+    }
+  } catch (err) {
+    // Ignore storage restriction on mobile content:// viewer
+  }
+}
+
+let companyProfile = safeGetLocal("billing_company_v2", DEFAULT_COMPANY);
+let partiesList = safeGetLocal("sism_parties", DEFAULT_PARTIES);
+let savedInvoices = safeGetLocal("sism_invoices", []);
+let authCredentials = safeGetLocal("sism_auth", DEFAULT_AUTH);
+
+// -------------------------------------------------------------
+// SUPABASE CLOUD DATABASE CONFIGURATION & SYNC ENGINE
+// -------------------------------------------------------------
+const SUPABASE_URL = "https://tnznjdcbrikfbsrgipya.supabase.co";
+const SUPABASE_KEY = "sb_publishable_mlJhZQX6axbMOJC3M4Z6IQ_BX-0nW6c";
+let liveCompanySyncTimer = null;
+
+function supabaseHeaders(preferHeader) {
+  const headers = {
+    "apikey": SUPABASE_KEY,
+    "Content-Type": "application/json"
+  };
+  if (preferHeader) {
+    headers["Prefer"] = preferHeader;
+  }
+  return headers;
+}
+
+async function pushSettingsToSupabase() {
+  if (!SUPABASE_URL || !SUPABASE_KEY) return;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/billing_settings?on_conflict=id`, {
+      method: "POST",
+      headers: supabaseHeaders("resolution=merge-duplicates,return=minimal"),
+      body: JSON.stringify({
+        id: 1,
+        company_profile: companyProfile,
+        auth_credentials: authCredentials,
+        updated_at: new Date().toISOString()
+      })
+    });
+  } catch (err) {
+    console.warn("Supabase settings sync deferred:", err);
+  }
+}
+
+async function pushPartyToSupabase(party) {
+  if (!SUPABASE_URL || !SUPABASE_KEY || !party || !party.id) return;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/billing_parties?on_conflict=id`, {
+      method: "POST",
+      headers: supabaseHeaders("resolution=merge-duplicates,return=minimal"),
+      body: JSON.stringify({
+        id: String(party.id),
+        name: party.name || "",
+        address: party.address || "",
+        gstin: party.gstin || "",
+        state: party.state || "",
+        state_code: party.stateCode || "",
+        updated_at: new Date().toISOString()
+      })
+    });
+  } catch (err) {
+    console.warn("Supabase party sync deferred:", err);
+  }
+}
+
+async function pushAllPartiesToSupabase() {
+  if (!SUPABASE_URL || !SUPABASE_KEY || !Array.isArray(partiesList) || !partiesList.length) return;
+  try {
+    const payload = partiesList.map(p => ({
+      id: String(p.id),
+      name: p.name || "",
+      address: p.address || "",
+      gstin: p.gstin || "",
+      state: p.state || "",
+      state_code: p.stateCode || "",
+      updated_at: new Date().toISOString()
+    }));
+    await fetch(`${SUPABASE_URL}/rest/v1/billing_parties?on_conflict=id`, {
+      method: "POST",
+      headers: supabaseHeaders("resolution=merge-duplicates,return=minimal"),
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    console.warn("Supabase bulk parties sync deferred:", err);
+  }
+}
+
+async function deletePartyFromSupabase(id) {
+  if (!SUPABASE_URL || !SUPABASE_KEY || !id) return;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/billing_parties?id=eq.${encodeURIComponent(id)}`, {
+      method: "DELETE",
+      headers: supabaseHeaders()
+    });
+  } catch (err) {
+    console.warn("Supabase party delete deferred:", err);
+  }
+}
+
+async function pushInvoiceToSupabase(inv) {
+  if (!SUPABASE_URL || !SUPABASE_KEY || !inv || !inv.invNo) return;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/billing_invoices?on_conflict=inv_no`, {
+      method: "POST",
+      headers: supabaseHeaders("resolution=merge-duplicates,return=minimal"),
+      body: JSON.stringify({
+        inv_no: String(inv.invNo),
+        inv_date: inv.invDate || "",
+        vehicle_no: inv.vehicleNo || "",
+        buyer_name: (inv.buyer && inv.buyer.name) ? inv.buyer.name : "",
+        grand_total: (inv.totals && inv.totals.grandTotal) ? Number(inv.totals.grandTotal) : 0,
+        invoice_data: inv,
+        saved_at: inv.savedAt || new Date().toISOString()
+      })
+    });
+  } catch (err) {
+    console.warn("Supabase invoice sync deferred:", err);
+  }
+}
+
+async function pushAllInvoicesToSupabase() {
+  if (!SUPABASE_URL || !SUPABASE_KEY || !Array.isArray(savedInvoices) || !savedInvoices.length) return;
+  try {
+    const payload = savedInvoices.map(inv => ({
+      inv_no: String(inv.invNo),
+      inv_date: inv.invDate || "",
+      vehicle_no: inv.vehicleNo || "",
+      buyer_name: (inv.buyer && inv.buyer.name) ? inv.buyer.name : "",
+      grand_total: (inv.totals && inv.totals.grandTotal) ? Number(inv.totals.grandTotal) : 0,
+      invoice_data: inv,
+      saved_at: inv.savedAt || new Date().toISOString()
+    }));
+    await fetch(`${SUPABASE_URL}/rest/v1/billing_invoices?on_conflict=inv_no`, {
+      method: "POST",
+      headers: supabaseHeaders("resolution=merge-duplicates,return=minimal"),
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    console.warn("Supabase bulk invoices sync deferred:", err);
+  }
+}
+
+async function deleteInvoiceFromSupabase(invNo) {
+  if (!SUPABASE_URL || !SUPABASE_KEY || !invNo) return;
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/billing_invoices?inv_no=eq.${encodeURIComponent(invNo)}`, {
+      method: "DELETE",
+      headers: supabaseHeaders()
+    });
+  } catch (err) {
+    console.warn("Supabase invoice delete deferred:", err);
+  }
+}
+
+async function syncFromSupabase() {
+  if (!SUPABASE_URL || !SUPABASE_KEY) return;
+  try {
+    // 1. Fetch Company Settings & Auth Credentials
+    const setRes = await fetch(`${SUPABASE_URL}/rest/v1/billing_settings?id=eq.1&select=*`, {
+      method: "GET",
+      headers: supabaseHeaders()
+    });
+    if (setRes.ok) {
+      const setRows = await setRes.json();
+      if (Array.isArray(setRows) && setRows.length > 0) {
+        const row = setRows[0];
+        if (row.company_profile && typeof row.company_profile === "object") {
+          companyProfile = Object.assign({}, DEFAULT_COMPANY, row.company_profile);
+          safeSetLocal("billing_company_v2", companyProfile);
+        }
+        if (row.auth_credentials && row.auth_credentials.username && row.auth_credentials.password) {
+          authCredentials = row.auth_credentials;
+          safeSetLocal("sism_auth", authCredentials);
+        }
+      } else if (companyProfile && companyProfile.name) {
+        // Seed initial local company profile to Supabase if table is empty
+        pushSettingsToSupabase();
+      }
+    }
+
+    // 2. Fetch Parties
+    const partyRes = await fetch(`${SUPABASE_URL}/rest/v1/billing_parties?select=*&order=updated_at.asc`, {
+      method: "GET",
+      headers: supabaseHeaders()
+    });
+    if (partyRes.ok) {
+      const partyRows = await partyRes.json();
+      if (Array.isArray(partyRows) && partyRows.length > 0) {
+        partiesList = partyRows.map(r => ({
+          id: r.id,
+          name: r.name || "",
+          address: r.address || "",
+          gstin: r.gstin || "",
+          state: r.state || "",
+          stateCode: r.state_code || ""
+        }));
+        safeSetLocal("sism_parties", partiesList);
+      } else if (partiesList && partiesList.length > 0) {
+        pushAllPartiesToSupabase();
+      }
+    }
+
+    // 3. Fetch Saved Invoices
+    const invRes = await fetch(`${SUPABASE_URL}/rest/v1/billing_invoices?select=*&order=saved_at.desc`, {
+      method: "GET",
+      headers: supabaseHeaders()
+    });
+    if (invRes.ok) {
+      const invRows = await invRes.json();
+      if (Array.isArray(invRows) && invRows.length > 0) {
+        savedInvoices = invRows
+          .map(r => r.invoice_data)
+          .filter(d => d && typeof d === "object" && d.invNo);
+        safeSetLocal("sism_invoices", savedInvoices);
+      } else if (savedInvoices && savedInvoices.length > 0) {
+        pushAllInvoicesToSupabase();
+      }
+    }
+
+    // Refresh UI after cloud sync
+    syncCompanyBranding();
+    populatePartiesDatalist();
+    renderPartiesTable();
+    renderHistoryTable();
+    renderHomeRecent();
+    renderBackupSummary();
+  } catch (err) {
+    console.warn("Supabase initial sync skipped or offline:", err);
+  }
+}
+
+let invoiceItems = [
+  {
+    desc: "Mahagany Reeper and Battons",
+    hsn: "4407",
+    qty: 13.600,
+    unit: "CBM",
+    rate: 7000.00,
+    taxRate: 18
+  }
+];
+
+let currentZoom = 1.0;
+
+// -------------------------------------------------------------
+// HELPER: Date Formatting & Currency & Number to Words
+// -------------------------------------------------------------
+function formatTallyDate(isoDateStr) {
+  if (!isoDateStr) return "";
+  const parts = isoDateStr.split("-");
+  if (parts.length < 3) return isoDateStr;
+  const year = parts[0];
+  const monthIdx = parseInt(parts[1], 10) - 1;
+  const day = parts[2];
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const mName = months[monthIdx] || parts[1];
+  const yShort = year.length === 4 ? year.slice(-2) : year;
+  return `${day}-${mName}-${yShort}`;
+}
+
+function getTodayIsoDate() {
+  const d = new Date();
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function formatINR(val) {
+  if (isNaN(val) || val === null) return "0.00";
+  const num = Math.round(Number(val) * 100) / 100;
+  return num.toLocaleString("en-IN", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+function numberToWordsINR(amount) {
+  if (isNaN(amount) || amount === null || amount === 0) return "INR Zero Only";
+
+  const num = Math.round(amount * 100) / 100;
+  const parts = num.toFixed(2).split(".");
+  let rupees = parseInt(parts[0], 10);
+  let paise = parseInt(parts[1], 10);
+
+  const ones = [
+    "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+    "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+    "Seventeen", "Eighteen", "Nineteen"
+  ];
+  const tens = [
+    "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
+  ];
+
+  function convertTwoDigits(n) {
+    if (n === 0) return "";
+    if (n < 20) return ones[n];
+    let t = Math.floor(n / 10);
+    let o = n % 10;
+    return (tens[t] + " " + ones[o]).trim();
+  }
+
+  function convertThreeDigits(n) {
+    let hundred = Math.floor(n / 100);
+    let rest = n % 100;
+    let str = "";
+    if (hundred > 0) {
+      str += ones[hundred] + " Hundred";
+    }
+    if (rest > 0) {
+      if (str !== "") str += " ";
+      str += convertTwoDigits(rest);
+    }
+    return str;
+  }
+
+  let words = "";
+
+  // Crores (>= 1,00,00,000)
+  if (rupees >= 10000000) {
+    let cr = Math.floor(rupees / 10000000);
+    words += convertThreeDigits(cr) + " Crore ";
+    rupees %= 10000000;
+  }
+
+  // Lakhs (>= 1,00,000)
+  if (rupees >= 100000) {
+    let lk = Math.floor(rupees / 100000);
+    words += convertTwoDigits(lk) + " Lakh ";
+    rupees %= 100000;
+  }
+
+  // Thousands (>= 1,000)
+  if (rupees >= 1000) {
+    let th = Math.floor(rupees / 1000);
+    words += convertTwoDigits(th) + " Thousand ";
+    rupees %= 1000;
+  }
+
+  // Hundreds & Below
+  if (rupees > 0) {
+    words += convertThreeDigits(rupees);
+  }
+
+  words = words.trim();
+  let result = "INR " + (words || "Zero");
+
+  if (paise > 0) {
+    result += " and " + convertTwoDigits(paise) + " Paise";
+  }
+
+  result += " Only";
+  return result.replace(/\s+/g, " ");
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// -------------------------------------------------------------
+// NAVIGATION DRAWER & TAB SWITCHING
+// -------------------------------------------------------------
+function toggleNavDrawer() {
+  const drawer = document.getElementById("navDrawer");
+  const backdrop = document.getElementById("navDrawerBackdrop");
+  drawer.classList.toggle("hidden");
+  backdrop.classList.toggle("hidden");
+}
+
+function navFromDrawer(viewName) {
+  toggleNavDrawer();
+  navigateTo(viewName);
+}
+
+function navigateTo(viewName) {
+  const views = ["home", "billing", "parties", "history", "settings"];
+  views.forEach(v => {
+    const el = document.getElementById(`view-${v}`);
+    if (el) el.classList.remove("active");
+    const dlink = document.getElementById(`dlink-${v}`);
+    if (dlink) dlink.classList.remove("active");
+  });
+
+  const activeView = document.getElementById(`view-${viewName}`);
+  if (activeView) activeView.classList.add("active");
+
+  const activeDlink = document.getElementById(`dlink-${viewName}`);
+  if (activeDlink) activeDlink.classList.add("active");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  syncCompanyBranding();
+
+  if (viewName === "home") renderHomeRecent();
+  if (viewName === "parties") renderPartiesTable();
+  if (viewName === "history") renderHistoryTable();
+  if (viewName === "settings") {
+    showSettingsMenu();
+    loadSettingsForm();
+  }
+}
+
+// -------------------------------------------------------------
+// INVOICE DATES & FORM HANDLERS
+// -------------------------------------------------------------
+function onDatePicked(isoVal) {
+  document.getElementById("invDate").value = formatTallyDate(isoVal);
+}
+
+function onOrderDatePicked(isoVal) {
+  document.getElementById("buyerOrderDate").value = formatTallyDate(isoVal);
+}
+
+function onDeliveryDatePicked(isoVal) {
+  document.getElementById("deliveryNoteDate").value = formatTallyDate(isoVal);
+}
+
+function toggleMoreOptions() {
+  const content = document.getElementById("moreOptionsContent");
+  const arrow = document.getElementById("moreOptionsArrow");
+  if (content.classList.contains("hidden")) {
+    content.classList.remove("hidden");
+    arrow.textContent = "▲";
+  } else {
+    content.classList.add("hidden");
+    arrow.textContent = "▼";
+  }
+}
+
+function toggleManualTaxOption() {
+  const box = document.getElementById("manualTaxControls");
+  box.classList.toggle("hidden");
+}
+
+function onManualTaxChange() {
+  calculateTotals();
+}
+
+// -------------------------------------------------------------
+// PARTY AUTOCOMPLETION & STATE DETECTION
+// -------------------------------------------------------------
+function populatePartiesDatalist() {
+  const dlistBuyer = document.getElementById("partiesDatalist");
+  const dlistConsignee = document.getElementById("partiesDatalistConsignee");
+  if (!dlistBuyer || !dlistConsignee) return;
+
+  dlistBuyer.innerHTML = "";
+  dlistConsignee.innerHTML = "";
+
+  partiesList.forEach(p => {
+    const optB = document.createElement("option");
+    optB.value = p.name;
+    dlistBuyer.appendChild(optB);
+
+    const optC = document.createElement("option");
+    optC.value = p.name;
+    dlistConsignee.appendChild(optC);
+  });
+}
+
+function onBuyerNameInput(val) {
+  const party = partiesList.find(p => p.name.toLowerCase() === val.trim().toLowerCase());
+  if (party) {
+    document.getElementById("buyerAddress").value = party.address;
+    document.getElementById("buyerGstin").value = party.gstin;
+    document.getElementById("buyerState").value = party.state;
+    document.getElementById("buyerStateCode").value = party.stateCode;
+
+    // If consignee is blank, sync with buyer
+    const cName = document.getElementById("consigneeName").value.trim();
+    if (!cName) {
+      document.getElementById("consigneeName").value = party.name;
+      document.getElementById("consigneeAddress").value = party.address;
+      document.getElementById("consigneeGstin").value = party.gstin;
+      document.getElementById("consigneeState").value = party.state;
+      document.getElementById("consigneeStateCode").value = party.stateCode;
+    }
+    calculateTotals();
+  }
+}
+
+function onConsigneeNameInput(val) {
+  const party = partiesList.find(p => p.name.toLowerCase() === val.trim().toLowerCase());
+  if (party) {
+    document.getElementById("consigneeAddress").value = party.address;
+    document.getElementById("consigneeGstin").value = party.gstin;
+    document.getElementById("consigneeState").value = party.state;
+    document.getElementById("consigneeStateCode").value = party.stateCode;
+  }
+}
+
+function autoDetectStateFromGstin(gstinVal, stateElId, codeElId) {
+  const clean = gstinVal.trim().toUpperCase();
+  if (clean.length >= 2) {
+    const code = clean.substring(0, 2);
+    if (STATE_CODES[code]) {
+      const stateEl = document.getElementById(stateElId);
+      const codeEl = document.getElementById(codeElId);
+      if (stateEl) stateEl.value = STATE_CODES[code];
+      if (codeEl) codeEl.value = code;
+    }
+  }
+}
+
+function onGstinInput(val) {
+  autoDetectStateFromGstin(val, "buyerState", "buyerStateCode");
+  onStateCodeChange();
+}
+
+function onStateCodeChange() {
+  const code = document.getElementById("buyerStateCode").value.trim();
+  if (STATE_CODES[code] && !document.getElementById("buyerState").value) {
+    document.getElementById("buyerState").value = STATE_CODES[code];
+  }
+  calculateTotals();
+}
+
+// -------------------------------------------------------------
+// COMPACT 2-LINE PRODUCT ITEMS (Fast Single-Screen Data Entry)
+// -------------------------------------------------------------
+function renderItemsForm() {
+  const container = document.getElementById("itemsContainer");
+  if (!container) return;
+  container.innerHTML = "";
+
+  invoiceItems.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.className = "compact-item-row";
+    const lineTotal = (item.qty || 0) * (item.rate || 0);
+
+    row.innerHTML = `
+      <!-- Line 1: Description + HSN + Delete -->
+      <div class="item-line-1">
+        <div class="form-field item-desc-field">
+          <label>Description of Goods <span class="req">*</span></label>
+          <input type="text" class="item-desc-input" value="${escapeHtml(item.desc)}" 
+                 placeholder="Description of Goods / Timber..." 
+                 oninput="updateItemField(${index}, 'desc', this.value)" required>
+        </div>
+        <div class="form-field item-hsn-field">
+          <label>HSN/SAC</label>
+          <input type="text" class="item-hsn-input" value="${escapeHtml(item.hsn || '4407')}" 
+                 placeholder="4407" title="HSN/SAC Code"
+                 oninput="updateItemField(${index}, 'hsn', this.value)">
+        </div>
+        ${invoiceItems.length > 1 ? `<button type="button" class="item-del-btn" onclick="removeItemRow(${index})" title="Delete item">&times;</button>` : ''}
+      </div>
+
+      <!-- Line 2: Qty, Unit, Rate, Tax%, Total -->
+      <div class="item-line-2">
+        <div class="form-field item-field-wrap">
+          <label>Quantity <span class="req">*</span></label>
+          <input type="number" step="any" value="${item.qty}" 
+                 oninput="updateItemField(${index}, 'qty', parseFloat(this.value) || 0)" required>
+        </div>
+        <div class="form-field item-field-wrap fixed-unit">
+          <label>Unit</label>
+          <input type="text" value="${escapeHtml(item.unit || 'CBM')}" 
+                 placeholder="CBM" oninput="updateItemField(${index}, 'unit', this.value)">
+        </div>
+        <div class="form-field item-field-wrap">
+          <label>Rate (₹) <span class="req">*</span></label>
+          <input type="number" step="any" value="${item.rate}" 
+                 oninput="updateItemField(${index}, 'rate', parseFloat(this.value) || 0)" required>
+        </div>
+        <div class="form-field item-field-wrap fixed-tax">
+          <label>Tax %</label>
+          <select onchange="updateItemField(${index}, 'taxRate', parseFloat(this.value))">
+            <option value="18" ${item.taxRate === 18 ? 'selected' : ''}>18%</option>
+            <option value="12" ${item.taxRate === 12 ? 'selected' : ''}>12%</option>
+            <option value="5" ${item.taxRate === 5 ? 'selected' : ''}>5%</option>
+            <option value="28" ${item.taxRate === 28 ? 'selected' : ''}>28%</option>
+            <option value="0" ${item.taxRate === 0 ? 'selected' : ''}>0%</option>
+          </select>
+        </div>
+        <div class="form-field item-total-field">
+          <label>Amount</label>
+          <div class="item-total-badge" id="itemTotal_${index}">
+            ₹ ${formatINR(lineTotal)}
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(row);
+  });
+}
+
+function updateItemField(index, field, value) {
+  if (invoiceItems[index]) {
+    invoiceItems[index][field] = value;
+    if (field === "qty" || field === "rate") {
+      const badge = document.getElementById(`itemTotal_${index}`);
+      if (badge) {
+        const lineTotal = (invoiceItems[index].qty || 0) * (invoiceItems[index].rate || 0);
+        badge.textContent = `₹ ${formatINR(lineTotal)}`;
+      }
+    }
+    calculateTotals();
+  }
+}
+
+function addItemRow() {
+  invoiceItems.push({
+    desc: "",
+    hsn: "4407",
+    qty: 1,
+    unit: "CBM",
+    rate: 0,
+    taxRate: 18
+  });
+  renderItemsForm();
+  calculateTotals();
+}
+
+function removeItemRow(index) {
+  if (invoiceItems.length > 1) {
+    invoiceItems.splice(index, 1);
+    renderItemsForm();
+    calculateTotals();
+  }
+}
+
+// -------------------------------------------------------------
+// GST DETERMINATION & TOTALS CALCULATION
+// -------------------------------------------------------------
+function determineTaxMode() {
+  const manual = document.getElementById("manualTaxType") ? document.getElementById("manualTaxType").value : "AUTO";
+  if (manual === "IGST") return "IGST";
+  if (manual === "CGST_SGST") return "CGST_SGST";
+
+  const buyerStateCode = document.getElementById("buyerStateCode").value.trim();
+  const companyStateCode = (companyProfile.stateCode || "32").trim();
+
+  // If buyer state code matches company code -> Intrastate CGST + SGST
+  if (buyerStateCode && buyerStateCode === companyStateCode) {
+    return "CGST_SGST";
+  }
+  return "IGST"; // Interstate default
+}
+
+function calculateTotals() {
+  let taxableValue = 0;
+  let totalQty = 0;
+
+  invoiceItems.forEach(item => {
+    const q = Number(item.qty) || 0;
+    const r = Number(item.rate) || 0;
+    taxableValue += (q * r);
+    totalQty += q;
+  });
+
+  const taxMode = determineTaxMode();
+  let totalTax = 0;
+
+  invoiceItems.forEach(item => {
+    const amt = (Number(item.qty) || 0) * (Number(item.rate) || 0);
+    const rate = Number(item.taxRate) || 18;
+    totalTax += (amt * (rate / 100));
+  });
+
+  const grandTotal = Math.round(taxableValue + totalTax);
+
+  // Update UI Summary Elements
+  const taxModeText = document.getElementById("taxModeText");
+  if (taxModeText) {
+    if (taxMode === "IGST") {
+      taxModeText.innerHTML = `Interstate &rarr; <strong>IGST (Integrated Tax)</strong>`;
+    } else {
+      taxModeText.innerHTML = `Intrastate &rarr; <strong>CGST + SGST (Central + State Tax)</strong>`;
+    }
+  }
+
+  const elTaxable = document.getElementById("calc_taxable");
+  const elTaxAmount = document.getElementById("calc_total_tax_amount");
+  const elTotal = document.getElementById("calc_total");
+  const elWords = document.getElementById("calc_words");
+
+  if (elTaxable) elTaxable.textContent = `₹ ${formatINR(taxableValue)}`;
+  if (elTaxAmount) elTaxAmount.textContent = `₹ ${formatINR(totalTax)}`;
+  if (elTotal) elTotal.textContent = `₹ ${formatINR(grandTotal)}`;
+  if (elWords) elWords.textContent = numberToWordsINR(grandTotal);
+
+  return { taxableValue, totalTax, grandTotal, totalQty, taxMode };
+}
+
+// -------------------------------------------------------------
+// EXACT 1:1 TALLY A4 PRINT SHEET SYNC
+// -------------------------------------------------------------
+function syncFormToPrintSheet() {
+  const calc = calculateTotals();
+
+  // 1. Company Box
+  document.getElementById("p_compName").textContent = companyProfile.name || "";
+  document.getElementById("p_compAddress").innerHTML = escapeHtml(companyProfile.address || "").replace(/\n/g, "<br>");
+  document.getElementById("p_compUdayam").textContent = companyProfile.udayam || "";
+  document.getElementById("p_compGstin").textContent = companyProfile.gstin || "";
+  document.getElementById("p_compState").textContent = companyProfile.state || "";
+  document.getElementById("p_compStateCode").textContent = companyProfile.stateCode || "";
+
+  // 2. Consignee Box
+  const cName = document.getElementById("consigneeName").value || document.getElementById("buyerName").value;
+  const cAddr = document.getElementById("consigneeAddress").value || document.getElementById("buyerAddress").value;
+  const cGstin = document.getElementById("consigneeGstin").value || document.getElementById("buyerGstin").value;
+  const cState = document.getElementById("consigneeState").value || document.getElementById("buyerState").value;
+  const cCode = document.getElementById("consigneeStateCode").value || document.getElementById("buyerStateCode").value;
+
+  document.getElementById("p_consigneeName").textContent = cName;
+  document.getElementById("p_consigneeAddress").innerHTML = escapeHtml(cAddr).replace(/\n/g, "<br>");
+  document.getElementById("p_consigneeGstin").textContent = cGstin;
+  document.getElementById("p_consigneeStateLine").textContent = `${cState}, Code : ${cCode}`;
+
+  // 3. Buyer Box
+  const bName = document.getElementById("buyerName").value;
+  const bAddr = document.getElementById("buyerAddress").value;
+  const bGstin = document.getElementById("buyerGstin").value;
+  const bState = document.getElementById("buyerState").value;
+  const bCode = document.getElementById("buyerStateCode").value;
+
+  document.getElementById("p_buyerName").textContent = bName;
+  document.getElementById("p_buyerAddress").innerHTML = escapeHtml(bAddr).replace(/\n/g, "<br>");
+  document.getElementById("p_buyerGstin").textContent = bGstin;
+  document.getElementById("p_buyerStateLine").textContent = `${bState}, Code : ${bCode}`;
+
+  // 4. Metadata Right Column
+  document.getElementById("p_invNo").textContent = document.getElementById("invNo").value || "";
+  document.getElementById("p_invDate").textContent = document.getElementById("invDate").value || "";
+  document.getElementById("p_vehicleNo").textContent = (document.getElementById("vehicleNo").value || "").toUpperCase();
+
+  document.getElementById("p_deliveryNote").textContent = document.getElementById("deliveryNote").value || " ";
+  document.getElementById("p_paymentTerms").textContent = document.getElementById("paymentTerms").value || " ";
+  document.getElementById("p_refNoDate").textContent = document.getElementById("refNoDate").value || " ";
+  document.getElementById("p_otherRef").textContent = document.getElementById("otherRef").value || " ";
+  document.getElementById("p_buyerOrderNo").textContent = document.getElementById("buyerOrderNo").value || " ";
+  document.getElementById("p_buyerOrderDate").textContent = document.getElementById("buyerOrderDate").value || " ";
+  document.getElementById("p_dispatchDocNo").textContent = document.getElementById("dispatchDocNo").value || " ";
+  document.getElementById("p_deliveryNoteDate").textContent = document.getElementById("deliveryNoteDate").value || " ";
+  document.getElementById("p_dispatchedThrough").textContent = document.getElementById("dispatchedThrough").value || " ";
+  document.getElementById("p_destination").textContent = document.getElementById("destination").value || " ";
+  document.getElementById("p_billOfLading").textContent = document.getElementById("billOfLading").value || " ";
+  document.getElementById("p_termsOfDelivery").textContent = document.getElementById("termsOfDelivery").value || " ";
+
+  // 5. Product Items Table (with Tally Tax Ledger Row & Grand Total)
+  const tbody = document.getElementById("p_itemsBody");
+  tbody.innerHTML = "";
+
+  invoiceItems.forEach((item, idx) => {
+    const tr = document.createElement("tr");
+    const amt = (Number(item.qty) || 0) * (Number(item.rate) || 0);
+
+    tr.innerHTML = `
+      <td class="col-sl border-right">${idx + 1}</td>
+      <td class="col-desc border-right"><strong>${escapeHtml(item.desc)}</strong></td>
+      <td class="col-hsn border-right">${escapeHtml(item.hsn || "")}</td>
+      <td class="col-qty border-right"><strong>${Number(item.qty).toFixed(3)} ${escapeHtml(item.unit || "CBM")}</strong></td>
+      <td class="col-rate border-right">${formatINR(item.rate)}</td>
+      <td class="col-per border-right">${escapeHtml(item.unit || "CBM")}</td>
+      <td class="col-amt bold">${formatINR(amt)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Vertical spacer row to fill page height before tax ledger line
+  const spacerTr = document.createElement("tr");
+  spacerTr.className = "tally-spacer-row";
+  spacerTr.innerHTML = `
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+  `;
+  tbody.appendChild(spacerTr);
+
+  // Tally Tax Ledger Row(s) inside Items Table (IGST or CGST + SGST)
+  const mainTaxRate = (invoiceItems[0] && Number(invoiceItems[0].taxRate) !== undefined) ? Number(invoiceItems[0].taxRate) : 18;
+  if (calc.taxMode === "IGST") {
+    const taxRow = document.createElement("tr");
+    taxRow.className = "tally-tax-line-row";
+    taxRow.innerHTML = `
+      <td class="col-sl border-right"></td>
+      <td class="col-desc border-right tax-ledger-label">IGST</td>
+      <td class="col-hsn border-right"></td>
+      <td class="col-qty border-right"></td>
+      <td class="col-rate border-right italic-rate">${mainTaxRate}</td>
+      <td class="col-per border-right">%</td>
+      <td class="col-amt bold">${formatINR(calc.totalTax)}</td>
+    `;
+    tbody.appendChild(taxRow);
+  } else {
+    const halfRate = mainTaxRate / 2;
+    const halfTax = calc.totalTax / 2;
+    const cgstRow = document.createElement("tr");
+    cgstRow.className = "tally-tax-line-row";
+    cgstRow.innerHTML = `
+      <td class="col-sl border-right"></td>
+      <td class="col-desc border-right tax-ledger-label">CGST</td>
+      <td class="col-hsn border-right"></td>
+      <td class="col-qty border-right"></td>
+      <td class="col-rate border-right italic-rate">${halfRate}</td>
+      <td class="col-per border-right">%</td>
+      <td class="col-amt bold">${formatINR(halfTax)}</td>
+    `;
+    tbody.appendChild(cgstRow);
+
+    const sgstRow = document.createElement("tr");
+    sgstRow.className = "tally-tax-line-row";
+    sgstRow.innerHTML = `
+      <td class="col-sl border-right"></td>
+      <td class="col-desc border-right tax-ledger-label">SGST</td>
+      <td class="col-hsn border-right"></td>
+      <td class="col-qty border-right"></td>
+      <td class="col-rate border-right italic-rate">${halfRate}</td>
+      <td class="col-per border-right">%</td>
+      <td class="col-amt bold">${formatINR(halfTax)}</td>
+    `;
+    tbody.appendChild(sgstRow);
+  }
+
+  // Footer Totals (Grand Total matching Tally format)
+  const primaryUnit = (invoiceItems[0] && invoiceItems[0].unit) || "CBM";
+  document.getElementById("p_totalQty").textContent = `${calc.totalQty.toFixed(3)} ${primaryUnit}`;
+  document.getElementById("p_totalAmount").textContent = `₹ ${formatINR(calc.grandTotal)}`;
+
+  // Words
+  document.getElementById("p_amountInWords").textContent = numberToWordsINR(calc.grandTotal);
+  document.getElementById("p_taxAmountInWords").textContent = numberToWordsINR(calc.totalTax);
+
+  // 6. Tax Breakdown Table (47% first column aligned with vertical spine)
+  const taxWrap = document.getElementById("p_taxBreakdownWrapper");
+  if (calc.taxMode === "IGST") {
+    let taxRows = "";
+    invoiceItems.forEach(item => {
+      const amt = (Number(item.qty) || 0) * (Number(item.rate) || 0);
+      const rate = Number(item.taxRate) || 18;
+      const taxVal = amt * (rate / 100);
+      taxRows += `
+        <tr>
+          <td>${escapeHtml(item.hsn || "")}</td>
+          <td class="text-right">${formatINR(amt)}</td>
+          <td class="text-right">${rate}%</td>
+          <td class="text-right">${formatINR(taxVal)}</td>
+          <td class="text-right">${formatINR(taxVal)}</td>
+        </tr>
+      `;
+    });
+
+    taxWrap.innerHTML = `
+      <table class="tally-tax-table">
+        <colgroup>
+          <col style="width: 47%;">
+          <col style="width: 15%;">
+          <col style="width: 10%;">
+          <col style="width: 14%;">
+          <col style="width: 14%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th rowspan="2">HSN/SAC</th>
+            <th rowspan="2">Taxable<br>Value</th>
+            <th colspan="2">IGST</th>
+            <th rowspan="2">Total<br>Tax Amount</th>
+          </tr>
+          <tr>
+            <th>Rate</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${taxRows}
+          <tr class="bold">
+            <td class="text-right">Total</td>
+            <td class="text-right">${formatINR(calc.taxableValue)}</td>
+            <td></td>
+            <td class="text-right">${formatINR(calc.totalTax)}</td>
+            <td class="text-right">${formatINR(calc.totalTax)}</td>
+          </tr>
+        </tbody>
+      </table>
+    `;
+  } else {
+    // CGST + SGST Intrastate Breakdown
+    let taxRows = "";
+    invoiceItems.forEach(item => {
+      const amt = (Number(item.qty) || 0) * (Number(item.rate) || 0);
+      const halfRate = (Number(item.taxRate) || 18) / 2;
+      const halfTax = amt * (halfRate / 100);
+      const totTax = halfTax * 2;
+      taxRows += `
+        <tr>
+          <td>${escapeHtml(item.hsn || "")}</td>
+          <td class="text-right">${formatINR(amt)}</td>
+          <td class="text-right">${halfRate}%</td>
+          <td class="text-right">${formatINR(halfTax)}</td>
+          <td class="text-right">${halfRate}%</td>
+          <td class="text-right">${formatINR(halfTax)}</td>
+          <td class="text-right">${formatINR(totTax)}</td>
+        </tr>
+      `;
+    });
+
+    taxWrap.innerHTML = `
+      <table class="tally-tax-table">
+        <colgroup>
+          <col style="width: 47%;">
+          <col style="width: 13%;">
+          <col style="width: 6%;">
+          <col style="width: 10%;">
+          <col style="width: 6%;">
+          <col style="width: 10%;">
+          <col style="width: 8%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th rowspan="2">HSN/SAC</th>
+            <th rowspan="2">Taxable<br>Value</th>
+            <th colspan="2">Central Tax</th>
+            <th colspan="2">State Tax</th>
+            <th rowspan="2">Total<br>Tax Amount</th>
+          </tr>
+          <tr>
+            <th>Rate</th>
+            <th>Amount</th>
+            <th>Rate</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${taxRows}
+          <tr class="bold">
+            <td class="text-right">Total</td>
+            <td class="text-right">${formatINR(calc.taxableValue)}</td>
+            <td></td>
+            <td class="text-right">${formatINR(calc.totalTax / 2)}</td>
+            <td></td>
+            <td class="text-right">${formatINR(calc.totalTax / 2)}</td>
+            <td class="text-right">${formatINR(calc.totalTax)}</td>
+          </tr>
+        </tbody>
+      </table>
+    `;
+  }
+
+  // 7. Footer Seal & Signature
+  document.getElementById("p_signCompName").textContent = companyProfile.name || "";
+
+  const sealWrap = document.getElementById("p_sealImageWrap");
+  if (companyProfile.sealImg) {
+    sealWrap.innerHTML = `<img src="${companyProfile.sealImg}" alt="Seal">`;
+  } else {
+    sealWrap.innerHTML = "";
+  }
+
+  const signWrap = document.getElementById("p_signImageWrap");
+  if (companyProfile.signImg) {
+    signWrap.innerHTML = `<img src="${companyProfile.signImg}" alt="Signature">`;
+  } else {
+    signWrap.innerHTML = "";
+  }
+}
+
+// -------------------------------------------------------------
+// DIRECT NATIVE PRINT / PDF TRIGGER (Phone & Desktop Print Sheet)
+// -------------------------------------------------------------
+function triggerDirectPrint() {
+  const buyerName = document.getElementById("buyerName").value.trim();
+  if (!buyerName) {
+    alert("Please enter the Buyer Name before printing.");
+    document.getElementById("buyerName").focus();
+    return;
+  }
+
+  syncFormToPrintSheet();
+  window.print();
+}
+
+function openPrintPreview() {
+  triggerDirectPrint();
+}
+
+window.addEventListener("beforeprint", function() {
+  syncFormToPrintSheet();
+});
+
+// -------------------------------------------------------------
+// INVOICE STORAGE & HISTORY
+// -------------------------------------------------------------
+function saveCurrentInvoice() {
+  const invNo = document.getElementById("invNo").value.trim();
+  if (!invNo) {
+    alert("Please enter an Invoice Number.");
+    return;
+  }
+
+  const calc = calculateTotals();
+
+  const invoiceRecord = {
+    invNo: invNo,
+    invDate: document.getElementById("invDate").value,
+    invDatePicker: document.getElementById("invDatePicker").value,
+    vehicleNo: document.getElementById("vehicleNo").value,
+
+    // More options
+    deliveryNote: document.getElementById("deliveryNote").value,
+    paymentTerms: document.getElementById("paymentTerms").value,
+    refNoDate: document.getElementById("refNoDate").value,
+    otherRef: document.getElementById("otherRef").value,
+    buyerOrderNo: document.getElementById("buyerOrderNo").value,
+    buyerOrderDate: document.getElementById("buyerOrderDate").value,
+    buyerOrderDatePicker: document.getElementById("buyerOrderDatePicker").value,
+    dispatchDocNo: document.getElementById("dispatchDocNo").value,
+    deliveryNoteDate: document.getElementById("deliveryNoteDate").value,
+    deliveryNoteDatePicker: document.getElementById("deliveryNoteDatePicker").value,
+    dispatchedThrough: document.getElementById("dispatchedThrough").value,
+    destination: document.getElementById("destination").value,
+    billOfLading: document.getElementById("billOfLading").value,
+    termsOfDelivery: document.getElementById("termsOfDelivery").value,
+
+    // Parties
+    consignee: {
+      name: document.getElementById("consigneeName").value,
+      address: document.getElementById("consigneeAddress").value,
+      gstin: document.getElementById("consigneeGstin").value,
+      state: document.getElementById("consigneeState").value,
+      stateCode: document.getElementById("consigneeStateCode").value
+    },
+    buyer: {
+      name: document.getElementById("buyerName").value,
+      address: document.getElementById("buyerAddress").value,
+      gstin: document.getElementById("buyerGstin").value,
+      state: document.getElementById("buyerState").value,
+      stateCode: document.getElementById("buyerStateCode").value
+    },
+
+    items: JSON.parse(JSON.stringify(invoiceItems)),
+    totals: calc,
+    savedAt: new Date().toISOString()
+  };
+
+  const existingIdx = savedInvoices.findIndex(i => i.invNo === invNo);
+  if (existingIdx >= 0) {
+    savedInvoices[existingIdx] = invoiceRecord;
+  } else {
+    savedInvoices.unshift(invoiceRecord);
+  }
+
+  safeSetLocal("sism_invoices", savedInvoices);
+  pushInvoiceToSupabase(invoiceRecord);
+  alert(`Invoice ${invNo} saved successfully!`);
+}
+
+function loadInvoiceIntoForm(inv) {
+  document.getElementById("invNo").value = inv.invNo || "";
+  document.getElementById("invDate").value = inv.invDate || "";
+  document.getElementById("invDatePicker").value = inv.invDatePicker || "";
+  document.getElementById("vehicleNo").value = inv.vehicleNo || "";
+
+  document.getElementById("deliveryNote").value = inv.deliveryNote || "";
+  document.getElementById("paymentTerms").value = inv.paymentTerms || "";
+  document.getElementById("refNoDate").value = inv.refNoDate || "";
+  document.getElementById("otherRef").value = inv.otherRef || "";
+  document.getElementById("buyerOrderNo").value = inv.buyerOrderNo || "";
+  document.getElementById("buyerOrderDate").value = inv.buyerOrderDate || "";
+  document.getElementById("buyerOrderDatePicker").value = inv.buyerOrderDatePicker || "";
+  document.getElementById("dispatchDocNo").value = inv.dispatchDocNo || "";
+  document.getElementById("deliveryNoteDate").value = inv.deliveryNoteDate || "";
+  document.getElementById("deliveryNoteDatePicker").value = inv.deliveryNoteDatePicker || "";
+  document.getElementById("dispatchedThrough").value = inv.dispatchedThrough || "";
+  document.getElementById("destination").value = inv.destination || "";
+  document.getElementById("billOfLading").value = inv.billOfLading || "";
+  document.getElementById("termsOfDelivery").value = inv.termsOfDelivery || "";
+
+  if (inv.consignee) {
+    document.getElementById("consigneeName").value = inv.consignee.name || "";
+    document.getElementById("consigneeAddress").value = inv.consignee.address || "";
+    document.getElementById("consigneeGstin").value = inv.consignee.gstin || "";
+    document.getElementById("consigneeState").value = inv.consignee.state || "";
+    document.getElementById("consigneeStateCode").value = inv.consignee.stateCode || "";
+  }
+
+  if (inv.buyer) {
+    document.getElementById("buyerName").value = inv.buyer.name || "";
+    document.getElementById("buyerAddress").value = inv.buyer.address || "";
+    document.getElementById("buyerGstin").value = inv.buyer.gstin || "";
+    document.getElementById("buyerState").value = inv.buyer.state || "";
+    document.getElementById("buyerStateCode").value = inv.buyer.stateCode || "";
+  }
+
+  if (inv.items && inv.items.length) {
+    invoiceItems = JSON.parse(JSON.stringify(inv.items));
+  }
+
+  renderItemsForm();
+  calculateTotals();
+  navigateTo("billing");
+}
+
+function reprintInvoice(invNo) {
+  const inv = savedInvoices.find(i => i.invNo === invNo);
+  if (inv) {
+    loadInvoiceIntoForm(inv);
+    openPrintPreview();
+  }
+}
+
+function deleteInvoice(invNo) {
+  if (confirm(`Delete invoice ${invNo}?`)) {
+    savedInvoices = savedInvoices.filter(i => i.invNo !== invNo);
+    safeSetLocal("sism_invoices", savedInvoices);
+    deleteInvoiceFromSupabase(invNo);
+    renderHistoryTable();
+    renderHomeRecent();
+  }
+}
+
+function renderHistoryTable() {
+  const container = document.getElementById("historyListContainer");
+  if (!container) return;
+
+  const search = (document.getElementById("historySearchInput") ? document.getElementById("historySearchInput").value : "").toLowerCase();
+  const list = savedInvoices.filter(i => {
+    return (i.invNo && i.invNo.toLowerCase().includes(search)) ||
+           (i.buyer && i.buyer.name && i.buyer.name.toLowerCase().includes(search)) ||
+           (i.vehicleNo && i.vehicleNo.toLowerCase().includes(search));
+  });
+
+  if (list.length === 0) {
+    container.innerHTML = `<div style="grid-column: 1/-1; padding: 30px; text-align: center; color: #94a3b8;">No saved invoices found.</div>`;
+    return;
+  }
+
+  container.innerHTML = "";
+  list.forEach(inv => {
+    const card = document.createElement("div");
+    card.className = "history-card-item";
+    card.innerHTML = `
+      <div class="history-card-head">
+        <div>
+          <div class="history-card-inv">${escapeHtml(inv.invNo)}</div>
+          <div class="history-card-date">${escapeHtml(inv.invDate)} &bull; ${escapeHtml(inv.vehicleNo || "")}</div>
+        </div>
+        <div class="history-card-amt">₹ ${formatINR(inv.totals ? inv.totals.grandTotal : 0)}</div>
+      </div>
+      <div style="font-size:0.85rem; font-weight:600; color:#334155;">${escapeHtml(inv.buyer ? inv.buyer.name : "")}</div>
+      <div class="card-actions-row">
+        <button class="btn btn-sm btn-primary" onclick="reprintInvoice('${escapeHtml(inv.invNo)}')">Reprint</button>
+        <button class="btn btn-sm btn-secondary" onclick='loadInvoiceIntoForm(${JSON.stringify(inv)})'>Edit</button>
+        <button class="btn btn-sm" style="color:#dc2626;" onclick="deleteInvoice('${escapeHtml(inv.invNo)}')">Delete</button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderHomeRecent() {
+  const container = document.getElementById("homeRecentInvoicesList");
+  if (!container) return;
+
+  if (savedInvoices.length === 0) {
+    container.innerHTML = `<div style="padding:16px; color:#94a3b8; font-size:0.85rem; text-align:center;">No recent invoices yet. Click <strong>Sales Bill Entry</strong> above to start!</div>`;
+    return;
+  }
+
+  const recent = savedInvoices.slice(0, 3);
+  let html = `<div style="display:flex; flex-direction:column; gap:8px;">`;
+  recent.forEach(inv => {
+    html += `
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:10px; background:#f8fafc; border-radius:8px; border:1px solid #e2e8f0;">
+        <div>
+          <div style="font-weight:700; font-size:0.88rem;">${escapeHtml(inv.invNo)} &bull; <span style="font-weight:500; color:#64748b;">${escapeHtml(inv.buyer ? inv.buyer.name : "")}</span></div>
+          <div style="font-size:0.75rem; color:#94a3b8;">${escapeHtml(inv.invDate)} &bull; ${escapeHtml(inv.vehicleNo || "")}</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-weight:700; color:#1e3a8a; font-size:0.9rem;">₹ ${formatINR(inv.totals ? inv.totals.grandTotal : 0)}</span>
+          <button class="btn btn-sm btn-primary" onclick="reprintInvoice('${escapeHtml(inv.invNo)}')">Print</button>
+        </div>
+      </div>
+    `;
+  });
+  html += `</div>`;
+  container.innerHTML = html;
+}
+
+function resetFormForNewInvoice() {
+  if (confirm("Reset current bill for a new invoice?")) {
+    startNewInvoice();
+  }
+}
+
+function startNewInvoice() {
+  const nextNo = getNextInvoiceNumber();
+  document.getElementById("invNo").value = nextNo;
+
+  const todayIso = getTodayIsoDate();
+  document.getElementById("invDatePicker").value = todayIso;
+  document.getElementById("invDate").value = formatTallyDate(todayIso);
+
+  document.getElementById("vehicleNo").value = "";
+  document.getElementById("deliveryNote").value = "";
+  document.getElementById("paymentTerms").value = "";
+  document.getElementById("refNoDate").value = "";
+  document.getElementById("otherRef").value = "";
+  document.getElementById("buyerOrderNo").value = "";
+  document.getElementById("buyerOrderDate").value = "";
+  document.getElementById("buyerOrderDatePicker").value = "";
+  document.getElementById("dispatchDocNo").value = "";
+  document.getElementById("deliveryNoteDate").value = "";
+  document.getElementById("deliveryNoteDatePicker").value = "";
+  document.getElementById("dispatchedThrough").value = "";
+  document.getElementById("destination").value = "";
+  document.getElementById("billOfLading").value = "";
+  document.getElementById("termsOfDelivery").value = "";
+
+  document.getElementById("consigneeName").value = "";
+  document.getElementById("consigneeAddress").value = "";
+  document.getElementById("consigneeGstin").value = "";
+  document.getElementById("consigneeState").value = "";
+  document.getElementById("consigneeStateCode").value = "";
+
+  document.getElementById("buyerName").value = "";
+  document.getElementById("buyerAddress").value = "";
+  document.getElementById("buyerGstin").value = "";
+  document.getElementById("buyerState").value = "";
+  document.getElementById("buyerStateCode").value = "";
+
+  invoiceItems = [
+    {
+      desc: "Mahagany Reeper and Battons",
+      hsn: "4407",
+      qty: 1,
+      unit: "CBM",
+      rate: 7000.00,
+      taxRate: 18
+    }
+  ];
+
+  renderItemsForm();
+  calculateTotals();
+  navigateTo("billing");
+}
+
+function getNextInvoiceNumber() {
+  if (!savedInvoices.length) return "SISM/26-27/49";
+  const last = savedInvoices[0].invNo;
+  const match = last.match(/(\d+)$/);
+  if (match) {
+    const num = parseInt(match[1], 10) + 1;
+    return last.substring(0, match.index) + num;
+  }
+  return "SISM/26-27/50";
+}
+
+// -------------------------------------------------------------
+// PARTY MASTER (CUSTOMER LEDGERS)
+// -------------------------------------------------------------
+function renderPartiesTable() {
+  const container = document.getElementById("partyListContainer");
+  if (!container) return;
+  container.innerHTML = "";
+
+  partiesList.forEach(party => {
+    const card = document.createElement("div");
+    card.className = "party-card-item";
+    card.innerHTML = `
+      <div class="party-card-head">
+        <div class="party-card-title">${escapeHtml(party.name)}</div>
+        <span style="font-size:0.75rem; background:#eff6ff; color:#1e40af; padding:2px 8px; border-radius:4px; font-weight:700;">Code ${escapeHtml(party.stateCode)}</span>
+      </div>
+      <div class="party-card-gstin">GSTIN: ${escapeHtml(party.gstin || "Unregistered")}</div>
+      <div class="party-card-addr">${escapeHtml(party.address || "")}</div>
+      <div class="card-actions-row">
+        <button class="btn btn-sm btn-secondary" onclick="openEditPartyModal('${party.id}')">Edit</button>
+        <button class="btn btn-sm" style="color:#dc2626;" onclick="deleteParty('${party.id}')">Delete</button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function openAddPartyModal() {
+  document.getElementById("partyModalTitle").textContent = "Add New Party";
+  document.getElementById("pm_id").value = "";
+  document.getElementById("pm_name").value = "";
+  document.getElementById("pm_address").value = "";
+  document.getElementById("pm_gstin").value = "";
+  document.getElementById("pm_state").value = "";
+  document.getElementById("pm_stateCode").value = "";
+  document.getElementById("partyModal").classList.remove("hidden");
+}
+
+function openEditPartyModal(id) {
+  const party = partiesList.find(p => p.id === id);
+  if (!party) return;
+  document.getElementById("partyModalTitle").textContent = "Edit Party";
+  document.getElementById("pm_id").value = party.id;
+  document.getElementById("pm_name").value = party.name;
+  document.getElementById("pm_address").value = party.address;
+  document.getElementById("pm_gstin").value = party.gstin;
+  document.getElementById("pm_state").value = party.state;
+  document.getElementById("pm_stateCode").value = party.stateCode;
+  document.getElementById("partyModal").classList.remove("hidden");
+}
+
+function closePartyModal() {
+  document.getElementById("partyModal").classList.add("hidden");
+}
+
+function savePartyModal(e) {
+  e.preventDefault();
+  const id = document.getElementById("pm_id").value;
+  const name = document.getElementById("pm_name").value.trim();
+  const address = document.getElementById("pm_address").value.trim();
+  const gstin = document.getElementById("pm_gstin").value.trim().toUpperCase();
+  const state = document.getElementById("pm_state").value.trim();
+  const stateCode = document.getElementById("pm_stateCode").value.trim();
+
+  if (!name) {
+    alert("Please enter party name.");
+    return;
+  }
+
+  let savedParty = null;
+  if (id) {
+    const idx = partiesList.findIndex(p => p.id === id);
+    if (idx >= 0) {
+      savedParty = { id, name, address, gstin, state, stateCode };
+      partiesList[idx] = savedParty;
+    }
+  } else {
+    savedParty = {
+      id: "p_" + Date.now(),
+      name, address, gstin, state, stateCode
+    };
+    partiesList.push(savedParty);
+  }
+
+  safeSetLocal("sism_parties", partiesList);
+  if (savedParty) {
+    pushPartyToSupabase(savedParty);
+  }
+  populatePartiesDatalist();
+  closePartyModal();
+  renderPartiesTable();
+}
+
+function deleteParty(id) {
+  if (confirm("Delete this party?")) {
+    partiesList = partiesList.filter(p => p.id !== id);
+    safeSetLocal("sism_parties", partiesList);
+    deletePartyFromSupabase(id);
+    populatePartiesDatalist();
+    renderPartiesTable();
+  }
+}
+
+// -------------------------------------------------------------
+// LOGIN AUTHENTICATION & SECURITY CREDENTIALS
+// -------------------------------------------------------------
+function checkLoginState() {
+  const overlay = document.getElementById("loginOverlay");
+  if (!overlay) return;
+  const isLoggedIn = safeGetSessionLogin();
+  if (isLoggedIn) {
+    overlay.classList.add("hidden");
+  } else {
+    overlay.classList.remove("hidden");
+  }
+}
+
+async function handleLoginSubmit(e) {
+  e.preventDefault();
+  const userEl = document.getElementById("loginUsername");
+  const passEl = document.getElementById("loginPassword");
+  const errBox = document.getElementById("loginErrorMsg");
+
+  const enteredUser = (userEl.value || "").trim();
+  const enteredPass = (passEl.value || "").trim();
+
+  let savedUser = (authCredentials.username || "admin").trim();
+  let savedPass = (authCredentials.password || "admin123").trim();
+
+  // If credentials don't match local cache, do a quick fresh check from Supabase
+  if (enteredUser.toLowerCase() !== savedUser.toLowerCase() || enteredPass !== savedPass) {
+    await syncFromSupabase();
+    savedUser = (authCredentials.username || "admin").trim();
+    savedPass = (authCredentials.password || "admin123").trim();
+  }
+
+  if (enteredUser.toLowerCase() === savedUser.toLowerCase() && enteredPass === savedPass) {
+    safeSetSessionLogin(true);
+    if (errBox) errBox.classList.add("hidden");
+    passEl.value = "";
+    document.getElementById("loginOverlay").classList.add("hidden");
+    syncCompanyBranding();
+    syncFromSupabase();
+  } else {
+    if (errBox) {
+      errBox.textContent = "Invalid username or password. Please try again.";
+      errBox.classList.remove("hidden");
+    }
+  }
+}
+
+function logoutApp() {
+  safeSetSessionLogin(false);
+  const drawer = document.getElementById("navDrawer");
+  const backdrop = document.getElementById("navDrawerBackdrop");
+  if (drawer) drawer.classList.add("hidden");
+  if (backdrop) backdrop.classList.add("hidden");
+  const overlay = document.getElementById("loginOverlay");
+  if (overlay) overlay.classList.remove("hidden");
+  const userEl = document.getElementById("loginUsername");
+  const passEl = document.getElementById("loginPassword");
+  const errBox = document.getElementById("loginErrorMsg");
+  if (userEl) userEl.value = "";
+  if (passEl) passEl.value = "";
+  if (errBox) errBox.classList.add("hidden");
+}
+
+function togglePasswordField(inputId, btnEl) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  if (input.type === "password") {
+    input.type = "text";
+    if (btnEl) btnEl.textContent = "Hide";
+  } else {
+    input.type = "password";
+    if (btnEl) btnEl.textContent = "Show";
+  }
+}
+
+function syncCompanyBranding() {
+  const hasComp = companyProfile.name && companyProfile.name.trim() !== "";
+  const displayTitle = hasComp ? companyProfile.name.trim() : "GST Billing Portal";
+  const headerTitle = document.getElementById("headerCompName");
+  const drawerTitle = document.getElementById("drawerCompName");
+  const heroTitle = document.getElementById("heroCompName");
+  if (headerTitle) headerTitle.textContent = displayTitle;
+  if (drawerTitle) drawerTitle.textContent = displayTitle;
+  if (heroTitle) heroTitle.textContent = displayTitle;
+}
+
+function onCompanyNameLiveInput(val) {
+  companyProfile.name = (val || "").trim();
+  syncCompanyBranding();
+  safeSetLocal("billing_company_v2", companyProfile);
+  if (liveCompanySyncTimer) clearTimeout(liveCompanySyncTimer);
+  liveCompanySyncTimer = setTimeout(() => {
+    pushSettingsToSupabase();
+  }, 700);
+}
+
+// -------------------------------------------------------------
+// SETTINGS 3-BOX MENU & SUB-PANELS (Company Profile / Password / Backup)
+// -------------------------------------------------------------
+function showSettingsMenu() {
+  const mainMenu = document.getElementById("settings-main-menu");
+  const pCompany = document.getElementById("settings-panel-company");
+  const pSecurity = document.getElementById("settings-panel-security");
+  const pBackup = document.getElementById("settings-panel-backup");
+
+  if (mainMenu) mainMenu.classList.remove("hidden");
+  if (pCompany) pCompany.classList.add("hidden");
+  if (pSecurity) pSecurity.classList.add("hidden");
+  if (pBackup) pBackup.classList.add("hidden");
+}
+
+function openSettingsPanel(panelName) {
+  const mainMenu = document.getElementById("settings-main-menu");
+  const pCompany = document.getElementById("settings-panel-company");
+  const pSecurity = document.getElementById("settings-panel-security");
+  const pBackup = document.getElementById("settings-panel-backup");
+
+  if (mainMenu) mainMenu.classList.add("hidden");
+  if (pCompany) pCompany.classList.add("hidden");
+  if (pSecurity) pSecurity.classList.add("hidden");
+  if (pBackup) pBackup.classList.add("hidden");
+
+  if (panelName === "company" && pCompany) {
+    loadSettingsForm();
+    pCompany.classList.remove("hidden");
+  } else if (panelName === "security" && pSecurity) {
+    loadSettingsForm();
+    pSecurity.classList.remove("hidden");
+  } else if (panelName === "backup" && pBackup) {
+    renderBackupSummary();
+    pBackup.classList.remove("hidden");
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// -------------------------------------------------------------
+// COMPANY SETTINGS & SEPARATE SEAL & SIGNATURE UPLOADS
+// -------------------------------------------------------------
+function loadSettingsForm() {
+  document.getElementById("set_compName").value = companyProfile.name || "";
+  document.getElementById("set_compAddress").value = companyProfile.address || "";
+  document.getElementById("set_compUdayam").value = companyProfile.udayam || "";
+  document.getElementById("set_compGstin").value = companyProfile.gstin || "";
+  document.getElementById("set_compState").value = companyProfile.state || "";
+  document.getElementById("set_compStateCode").value = companyProfile.stateCode || "";
+
+  const setLoginUser = document.getElementById("set_loginUsername");
+  const setLoginPass = document.getElementById("set_loginPassword");
+  if (setLoginUser) setLoginUser.value = authCredentials.username || "admin";
+  if (setLoginPass) setLoginPass.value = authCredentials.password || "admin123";
+
+  renderSealThumbnail();
+  renderSignThumbnail();
+}
+
+function saveLoginCredentials(e) {
+  e.preventDefault();
+  const newUsername = document.getElementById("set_loginUsername").value.trim();
+  const newPassword = document.getElementById("set_loginPassword").value.trim();
+
+  if (!newUsername || !newPassword) {
+    alert("Please enter both a Username and Password.");
+    return;
+  }
+
+  authCredentials.username = newUsername;
+  authCredentials.password = newPassword;
+  safeSetLocal("sism_auth", authCredentials);
+  pushSettingsToSupabase();
+  alert("Login Username & Password updated successfully!");
+  showSettingsMenu();
+}
+
+function renderSealThumbnail() {
+  const box = document.getElementById("sealPreviewContainer");
+  if (!box) return;
+  if (companyProfile.sealImg) {
+    box.innerHTML = `
+      <img src="${companyProfile.sealImg}" alt="Seal Preview">
+      <button type="button" class="btn btn-sm" style="color:#dc2626;" onclick="removeSealImage()">Remove Seal</button>
+    `;
+  } else {
+    box.innerHTML = `<span style="font-size:0.75rem; color:#94a3b8;">No seal uploaded.</span>`;
+  }
+}
+
+function renderSignThumbnail() {
+  const box = document.getElementById("signPreviewContainer");
+  if (!box) return;
+  if (companyProfile.signImg) {
+    box.innerHTML = `
+      <img src="${companyProfile.signImg}" alt="Signature Preview">
+      <button type="button" class="btn btn-sm" style="color:#dc2626;" onclick="removeSignImage()">Remove Signature</button>
+    `;
+  } else {
+    box.innerHTML = `<span style="font-size:0.75rem; color:#94a3b8;">No signature uploaded.</span>`;
+  }
+}
+
+function handleSealUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    companyProfile.sealImg = evt.target.result;
+    safeSetLocal("billing_company_v2", companyProfile);
+    pushSettingsToSupabase();
+    renderSealThumbnail();
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleSignUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    companyProfile.signImg = evt.target.result;
+    safeSetLocal("billing_company_v2", companyProfile);
+    pushSettingsToSupabase();
+    renderSignThumbnail();
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeSealImage() {
+  companyProfile.sealImg = "";
+  safeSetLocal("billing_company_v2", companyProfile);
+  pushSettingsToSupabase();
+  renderSealThumbnail();
+}
+
+function removeSignImage() {
+  companyProfile.signImg = "";
+  safeSetLocal("billing_company_v2", companyProfile);
+  pushSettingsToSupabase();
+  renderSignThumbnail();
+}
+
+function saveCompanySettings(e) {
+  e.preventDefault();
+  companyProfile.name = document.getElementById("set_compName").value.trim();
+  companyProfile.address = document.getElementById("set_compAddress").value.trim();
+  companyProfile.udayam = document.getElementById("set_compUdayam").value.trim();
+  companyProfile.gstin = document.getElementById("set_compGstin").value.trim().toUpperCase();
+  companyProfile.state = document.getElementById("set_compState").value.trim();
+  companyProfile.stateCode = document.getElementById("set_compStateCode").value.trim();
+
+  syncCompanyBranding();
+  safeSetLocal("billing_company_v2", companyProfile);
+  pushSettingsToSupabase();
+  alert("Company profile saved successfully!");
+  showSettingsMenu();
+}
+
+// -------------------------------------------------------------
+// BACKUP & RESTORE DATA (Full JSON Export & Import)
+// -------------------------------------------------------------
+function renderBackupSummary() {
+  const compEl = document.getElementById("backup_compStatus");
+  const partiesEl = document.getElementById("backup_partiesCount");
+  const invEl = document.getElementById("backup_invoicesCount");
+
+  if (compEl) {
+    compEl.textContent = (companyProfile && companyProfile.name) ? companyProfile.name : "Not Set Yet";
+  }
+  if (partiesEl) {
+    partiesEl.textContent = `${partiesList.length} Parties`;
+  }
+  if (invEl) {
+    invEl.textContent = `${savedInvoices.length} Invoices`;
+  }
+}
+
+function downloadFullBackup() {
+  const backupData = {
+    app: "GST_Billing_Portal",
+    version: "2.0",
+    exportedAt: new Date().toISOString(),
+    companyProfile: companyProfile,
+    partiesList: partiesList,
+    savedInvoices: savedInvoices,
+    authCredentials: authCredentials
+  };
+
+  const jsonStr = JSON.stringify(backupData, null, 2);
+  const blob = new Blob([jsonStr], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  const dateStr = getTodayIsoDate();
+  link.href = url;
+  link.download = `billing_backup_${dateStr}.json`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+function restoreFromBackupFile(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    try {
+      const data = JSON.parse(evt.target.result);
+      if (!data || (typeof data !== "object")) {
+        alert("Invalid backup file format.");
+        return;
+      }
+
+      if (data.companyProfile) {
+        companyProfile = data.companyProfile;
+        safeSetLocal("billing_company_v2", companyProfile);
+      }
+      if (Array.isArray(data.partiesList)) {
+        partiesList = data.partiesList;
+        safeSetLocal("sism_parties", partiesList);
+      }
+      if (Array.isArray(data.savedInvoices)) {
+        savedInvoices = data.savedInvoices;
+        safeSetLocal("sism_invoices", savedInvoices);
+      }
+      if (data.authCredentials && data.authCredentials.username && data.authCredentials.password) {
+        authCredentials = data.authCredentials;
+        safeSetLocal("sism_auth", authCredentials);
+      }
+
+      // Sync restored backup data to Supabase Cloud
+      pushSettingsToSupabase();
+      pushAllPartiesToSupabase();
+      pushAllInvoicesToSupabase();
+
+      syncCompanyBranding();
+      loadSettingsForm();
+      populatePartiesDatalist();
+      renderPartiesTable();
+      renderHistoryTable();
+      renderHomeRecent();
+      renderBackupSummary();
+
+      alert("Backup restored successfully! All company details, parties, and invoices have been loaded and synced to cloud.");
+      e.target.value = "";
+    } catch (err) {
+      alert("Failed to read backup file. Please select a valid .json backup file.");
+    }
+  };
+  reader.readAsText(file);
+}
+
+// -------------------------------------------------------------
+// INITIALIZATION ON PAGE LOAD
+// -------------------------------------------------------------
+document.addEventListener("DOMContentLoaded", function() {
+  checkLoginState();
+  syncCompanyBranding();
+
+  // Set default initial date if picker empty
+  const datePicker = document.getElementById("invDatePicker");
+  if (datePicker && !datePicker.value) {
+    const today = getTodayIsoDate();
+    datePicker.value = today;
+    document.getElementById("invDate").value = formatTallyDate(today);
+  }
+
+  populatePartiesDatalist();
+  renderItemsForm();
+  calculateTotals();
+  renderHomeRecent();
+
+  // Sync latest data from Supabase Cloud Database
+  syncFromSupabase();
+});
+
+</script>
+</body>
+</html>
+
